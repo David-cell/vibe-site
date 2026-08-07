@@ -26,7 +26,7 @@ def model_compare_rows():
         use = ','.join(m.get('use', []))
         rows += ('<tr data-use="%s"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n'
                  % (use, html.escape(m['label']), m['context'],
-                    m['in'], m['out'], html.escape(m['best'])))
+                    '%.2f' % float(m['in']), '%.2f' % float(m['out']), html.escape(m['best'])))
     return rows
 
 # ---- tool registry: (slug, num, name, blurb) ----
@@ -244,7 +244,7 @@ def build_index():
   <div class="kicker">Est. 2026 · Privacy-first</div>
   <h2>Tools that keep your data on your device.</h2>
   <p>Seven practical tools to plan, prompt, pick, brief, and review your AI stack. Everything runs in your browser.</p>
-  <a href="ai-cost-calculator.html" class="cta">Start with the JSON Formatter →</a>
+  <a href="ai-cost-calculator.html" class="cta">Start with the AI Cost Calculator →</a>
   <div class="ornament">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <defs><pattern id="p" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#D4A045" opacity=".5"/></pattern></defs>
@@ -260,8 +260,8 @@ def build_index():
   <div class="ico">''' + ICONS['ai-cost-calculator'] + '''</div>
   <div class="txt">
     <span class="num">01 · Featured</span>
-    <h3>JSON Formatter &amp; Validator</h3>
-    <p>Catches the four errors that ruin every API debug session: trailing commas, single quotes, unquoted keys, comments.</p>
+    <h3>AI Cost Calculator</h3>
+    <p>Pick a model, enter tokens and volume, and see your monthly bill before you build — with and without prompt caching. Fully client-side.</p>
   </div>
 </a>'''
     f2 = '''
@@ -269,8 +269,8 @@ def build_index():
   <div class="ico">''' + ICONS['prompt-generator'] + '''</div>
   <div class="txt">
     <span class="num">02 · Featured</span>
-    <h3>JWT Debugger</h3>
-    <p>Decode JWT headers and payloads in your browser. Unlike most online decoders, your token never leaves the device.</p>
+    <h3>Prompt Generator</h3>
+    <p>Turn a vague idea into a structured, reusable prompt — goal, audience, constraints, and output format the model can actually follow.</p>
   </div>
 </a>'''
 
@@ -749,6 +749,7 @@ TOOL_CONTENT['model-compare'] = {
 </table>
 </div>
 <p class="hint">Indicative pricing (USD per 1M tokens). Context windows and rates shift constantly — verify on the provider site.</p>
+__MODEL_PAGES__
 <script>
 function filterModels(){
   var v=document.getElementById('useFilter').value;
@@ -858,6 +859,8 @@ def build_tool(slug):
                              .replace('__MODEL_COST__', model_cost_js()))
     elif slug == 'model-compare':
         body_src = body_src.replace('__MODEL_ROWS__', model_compare_rows())
+        links = ' &middot; '.join('<a href="models/%s.html">%s</a>' % (mm['id'], html.escape(mm['label'])) for mm in MODELS)
+        body_src = body_src.replace('__MODEL_PAGES__', '<p class="hint">Per-model price pages: ' + links + '</p>')
     schema = webapp_schema('Vibe Coding Tools — ' + name, slug, c['features'])
     topbar = f'''
 <div class="topbar">
@@ -872,6 +875,64 @@ def build_tool(slug):
     back = '<a class="back" href="index.html">← All tools</a>'
     body = back + topbar + SHIELD + hero + body_src + c['extra'] + TOOL_FAQ.get(slug, '') + footer()
     return page(c['title'], c['meta'], schema, body, active_slug=slug, url='https://vibe.david-cells.com/' + slug + '.html')
+
+# ============================================================
+# PER-MODEL PRICING PAGES (programmatic SEO — one page per model)
+# ============================================================
+def build_model_page(m):
+    slug = m['id']
+    label = m['label']
+    pin = '%.2f' % float(m['in'])
+    pout = '%.2f' % float(m['out'])
+    prefix = '../'
+    title = '%s API Pricing & Context Window (2026) | Vibe Coding Tools' % label
+    meta = ('%s pricing in 2026: $%s per 1M input tokens, $%s per 1M output tokens, %s context window. '
+            'Estimate your monthly bill and compare %s to other LLMs.'
+            % (label, pin, pout, m['context'], label))
+    # sample workload for an illustrative monthly cost (crawlable, quotable figure)
+    SAMPLE = {'req': 50000, 'ctx': 8000, 'in': 1000, 'out': 500}
+    ex = (SAMPLE['req'] * (SAMPLE['ctx'] / 1e6) * float(m['in'])
+          + SAMPLE['req'] * (SAMPLE['in'] / 1e6) * float(m['in'])
+          + SAMPLE['req'] * (SAMPLE['out'] / 1e6) * float(m['out']))
+    schema = ('{"@context":"https://schema.org","@type":"Product","name":"%s API",'
+              '"offers":{"@type":"Offer","priceCurrency":"USD","price":"%s","unitText":"per 1M input tokens"}}'
+              % (label.replace('"', '\\"'), pin))
+    hero = ('''<div class="t-tool-hero article-hero">
+      <div class="crumb"><a href="../index.html">Vibe Coding Tools</a> / <a href="../model-compare.html">Model Compare</a> / %s</div>
+      <h1>%s API Pricing &amp; Context Window</h1>
+      <p class="sub">Indicative 2026 rates. Verify on the provider's pricing page before budgeting.</p>
+    </div>''' % (html.escape(label), html.escape(label)))
+    table = ('''<div class="tablewrap"><table class="cmp">
+      <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Input price</td><td>$%s / 1M tokens</td></tr>
+        <tr><td>Output price</td><td>$%s / 1M tokens</td></tr>
+        <tr><td>Context window</td><td>%s</td></tr>
+        <tr><td>Best for</td><td>%s</td></tr>
+      </tbody></table></div>''' % (pin, pout, m['context'], html.escape(m['best'])))
+    example = ('''<h2>Example monthly cost</h2>
+    <p>At a sample workload of <strong>%s requests/month</strong> with %s context tokens, %s new input tokens, and %s output tokens per request,
+    %s costs roughly <strong>$%s/month</strong> (uncached). Turn on prompt caching and the context portion drops to about 10%%, often cutting the bill by half.
+    Estimate your own numbers with the <a class="link" href="../ai-cost-calculator.html">AI Cost Calculator</a>.</p>'''
+    % (format(SAMPLE['req'], ','), format(SAMPLE['ctx'], ','), format(SAMPLE['in'], ','), format(SAMPLE['out'], ','),
+       html.escape(label), format(ex, ',.2f')))
+    compare_block = ('''<h2>How %s compares</h2>
+    <p>%s sits among the current frontier and open-weight models. To see every model side by side — context window, input/output price, and best-fit use case —
+    open the <a class="link" href="../model-compare.html">LLM Model Compare</a> tool and filter by what you need (coding, long context, cheap volume, or reasoning).</p>'''
+    % (html.escape(label), html.escape(label)))
+    faq = ('''<h2>Frequently asked questions</h2>
+    <dl class="faq">
+      <dt>How much does %s cost per 1M tokens?</dt>
+      <dd>Input tokens are $%s per 1M and output tokens are $%s per 1M (indicative 2026 rates). Output costs more because generating tokens uses more compute.</dd>
+      <dt>What is the %s context window?</dt>
+      <dd>%s. A larger context window lets you send more code, docs, or conversation history per request without chunking.</dd>
+      <dt>Is this %s pricing current?</dt>
+      <dd>Rates are a snapshot captured at build time. AI pricing moves often and many providers offer cached-token discounts, so confirm on the official pricing page before committing a budget.</dd>
+      <dt>How do I estimate my own %s bill?</dt>
+      <dd>Use the <a class="link" href="../ai-cost-calculator.html">AI Cost Calculator</a> — enter your tokens and volume and see the monthly cost instantly, with and without prompt caching.</dd>
+    </dl>''' % (label, pin, pout, label, m['context'], label, label))
+    body = hero + '<article class="article">' + table + example + compare_block + faq + '</article>' + footer(prefix)
+    return page(title, meta, schema, body, prefix=prefix, page_id='', url='https://vibe.david-cells.com/models/' + slug + '.html')
 
 # ============================================================
 # BLOG
@@ -1119,10 +1180,207 @@ to see exactly how much each lever saves before you commit a budget.</p>
 </div>
 '''
   },
+
+  'is-vibe-coding-bad': {
+    'title':'Is Vibe Coding Bad? The Honest Answer (2026)',
+    'meta':'Vibe coding gets blamed for buggy code and job loss. Here is what the data and working developers actually say about its risks, limits, and when it is the right tool.',
+    'tag':'Vibe Coding',
+    'date':'August 7, 2026',
+    'read':'7 min read',
+    'excerpt':'Vibe coding is not magic and it is not a jobs apocalypse. It is a tool with a clear risk profile. Here is the honest, non-hyped version.',
+    'body':'''
+<p>"Vibe coding" — describing software in plain language and letting an AI write it — went from a joke to a
+daily workflow in about a year. Along the way it picked up two loud camps: people calling it a scam that
+produces unmaintainable garbage, and people calling it the end of programming jobs. Both are wrong. The
+honest answer is more useful than either extreme.</p>
+
+<h2>What "vibe coding" actually means</h2>
+<p>Vibe coding is using an AI coding assistant (Cursor, Windsurf, Claude Code, or a chat model) to generate
+code from a description rather than typing it by hand. You steer, test, and refine; the model does the
+typing. It is a spectrum, not a switch — most developers today mix AI-generated and hand-written code.</p>
+
+<h2>The real risks (they are specific, not vague)</h2>
+<p>The criticism is not baseless, but it is specific. The genuine failure modes are:</p>
+<ul>
+  <li><strong>Unreviewed code in production.</strong> AI can produce code that runs but is wrong, insecure, or unmaintainable. Shipping it without review is the actual danger.</li>
+  <li><strong>Hallucinated dependencies and APIs.</strong> Models invent libraries and functions. Left unchecked, this breaks builds and introduces supply-chain risk.</li>
+  <li><strong>No mental model.</strong> If you cannot explain how the code works, you cannot debug it at 2 a.m. Vibe coding without learning degrades your own skill.</li>
+  <li><strong>Hidden cost at scale.</strong> Generated code often resends huge context on every call; bills and latency creep up. Our <a class="link" href="../ai-cost-calculator.html">AI Cost Calculator</a> shows how fast that adds up.</li>
+</ul>
+
+<h2>Is it taking programming jobs?</h2>
+<p>Not in the way headlines claim. The data shows AI coding tools are <em>raising output per developer</em>,
+not eliminating developers. Surveys of working engineers in 2026 put daily AI-tool usage above 90% among
+US developers, and the dominant effect is "ship more" rather than "hire fewer." The people most at risk are
+those who refuse to use the tools, not the tools themselves.</p>
+
+<h2>When vibe coding is the right call</h2>
+<ul>
+  <li><strong>Prototypes and internal tools</strong> — speed matters more than perfect architecture.</li>
+  <li><strong>Boilerplate and refactors</strong> — let the model do the tedious parts.</li>
+  <li><strong>Learning a new stack</strong> — generate, then read, then understand.</li>
+</ul>
+
+<h2>When you should NOT vibe code</h2>
+<ul>
+  <li><strong>Security-critical or safety-critical code</strong> — review every line, or write it yourself.</li>
+  <li><strong>Code you will never understand</strong> — if you cannot maintain it, do not ship it.</li>
+  <li><strong>Production systems with no test coverage</strong> — generated code needs tests around it.</li>
+</ul>
+
+<h2>The balanced verdict</h2>
+<p>Vibe coding is not bad; <em>unreviewed</em> vibe coding is bad. Treat the model like a very fast, very
+confident junior engineer: great for drafts, useless without review. Pair it with a
+<a class="link" href="../ai-pr-review.html">PR review checklist</a> and an
+<a class="link" href="../ai-security-checklist.html">AI security checklist</a>, keep learning, and it
+becomes one of the highest-leverage tools you have.</p>
+
+<h2>Tools with offers</h2>
+<div class="aff-box">
+  <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Code with confidence</span></div>
+  <ul class="aff-list">
+    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Agentic coding with built-in review. Pro plan.</p></li>
+    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">Popular AI-first editor for fast iteration.</p></li>
+  </ul>
+  <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
+</div>
+'''
+  },
+
+  'how-to-vibe-code-a-website': {
+    'title':'How to Vibe Code a Website (Step by Step, 2026)',
+    'meta':'A beginner-friendly walkthrough for building a real website by describing it to an AI — no deep coding background required. Tools, prompts, and the workflow that actually works.',
+    'tag':'Vibe Coding',
+    'date':'August 7, 2026',
+    'read':'8 min read',
+    'excerpt':'You do not need to be a programmer to ship a website in 2026. Here is the exact workflow: pick a tool, write a good spec, generate, test, and publish.',
+    'body':'''
+<p>You can build and publish a real website in an afternoon without writing code by hand. "Vibe coding" a
+website means describing what you want in plain language and letting an AI tool generate the HTML, CSS, and
+JavaScript. This guide walks the exact workflow that works for beginners.</p>
+
+<h2>Step 1 — Write a one-page spec first</h2>
+<p>Do not open the tool and start typing "make me a site." Spend ten minutes on a spec: what is the site
+for, who visits, what pages, what it must do. A clear brief is the single biggest predictor of a good
+result. Use our <a class="link" href="../project-brief-generator.html">Project Brief Generator</a> to
+turn a vague idea into a structured brief the AI can actually follow.</p>
+
+<h2>Step 2 — Pick a tool</h2>
+<p>For a first website, an AI-first editor (Cursor, Windsurf) or an agent (Claude Code) both work. If you
+have no setup preference, start with a chat model and ask it to build a single static HTML file — the
+simplest thing that can go live. Compare options in our
+<a class="link" href="../blog/cursor-vs-windsurf.html">Cursor vs Windsurf vs Claude Code</a> guide.</p>
+
+<h2>Step 3 — Generate from the spec</h2>
+<p>Paste your brief and ask for a complete, self-contained page. Good prompt anatomy matters: goal,
+audience, constraints, and "do not invent features." Our
+<a class="link" href="../prompt-generator.html">Prompt Generator</a> builds that structure for you so the
+model does not guess.</p>
+
+<h2>Step 4 — Test it like a visitor</h2>
+<p>Open the file in a browser. Click every button. Resize the window. Does it break on mobile? Most "it
+does not work" complaints come from skipping this step. If something is wrong, describe the symptom in
+plain language and ask the model to fix it.</p>
+
+<h2>Step 5 — Keep the context tight</h2>
+<p>Each revision resends your whole conversation. Long sessions get expensive and the model forgets
+details. Start a fresh chat per change, and use our
+<a class="link" href="../ai-cost-calculator.html">AI Cost Calculator</a> to see how context size drives
+your bill.</p>
+
+<h2>Step 6 — Publish</h2>
+<p>For a static site, drag the folder into Netlify or Cloudflare Pages and you are live with a free URL.
+Point a custom domain at it later. No server, no database, no maintenance.</p>
+
+<h2>Step 7 — Review before you trust it</h2>
+<p>Before sharing, run our <a class="link" href="../ai-security-checklist.html">AI Security Checklist</a> —
+generated sites sometimes leak keys or call unknown scripts. A two-minute check prevents embarrassing
+mistakes.</p>
+
+<h2>The honest part</h2>
+<p>Vibe coding a website gets you 80% of the way fast. The last 20% — accessibility, performance, edge
+cases — is where knowing a little HTML pays off. Treat the AI as a co-pilot, not a captain, and you will
+ship something real today and understand it tomorrow.</p>
+
+<h2>Tools with offers</h2>
+<div class="aff-box">
+  <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Ship your first site</span></div>
+  <ul class="aff-list">
+    <li><a class="aff-link" href="https://example.com/aff/netlify" target="_blank" rel="sponsored nofollow noopener">Netlify &rarr;</a><p class="aff-blurb">Drag-drop deploy for static sites. Free tier.</p></li>
+    <li><a class="aff-link" href="https://example.com/aff/cloudflare-pages" target="_blank" rel="sponsored nofollow noopener">Cloudflare Pages &rarr;</a><p class="aff-blurb">Fast, free static hosting on the edge.</p></li>
+  </ul>
+  <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
+</div>
+'''
+  },
+
+  'best-ai-app-builder': {
+    'title':'Best AI App Builder (2026): Compared & Ranked',
+    'meta':'The best AI app builders let you ship real software by describing it. We compare the top platforms on ease, control, pricing, and who each one is for.',
+    'tag':'Vibe Coding',
+    'date':'August 7, 2026',
+    'read':'10 min read',
+    'excerpt':'Bubble, FlutterFlow, Cursor, Claude Code, v0, Replit Agent, Lovable — which AI app builder actually ships your idea? A no-hype comparison.',
+    'body':'''
+<p>AI app builders promise the same thing: describe what you want, get working software. In 2026 the
+category split into two camps — <strong>no-code platforms</strong> (visual builders with AI assist) and
+<strong>code-generation agents</strong> (AI that writes real code you can own and edit). This comparison
+covers the leaders in each, with the trade-offs that actually matter when you ship.</p>
+
+<h2>Comparison table</h2>
+<div class="tablewrap"><table class="cmp">
+  <thead><tr><th>Builder</th><th>Type</th><th>Best for</th><th>Own the code?</th><th>Price from</th></tr></thead>
+  <tbody>
+    <tr><td>Bubble</td><td>No-code</td><td>Complex web apps, logic-heavy</td><td>Export-limited</td><td>$29/mo</td></tr>
+    <tr><td>FlutterFlow</td><td>No-code</td><td>Mobile + cross-platform</td><td>Yes (Flutter)</td><td>$30/mo</td></tr>
+    <tr><td>Lovable</td><td>Code-gen</td><td>Fast web app MVPs</td><td>Yes</td><td>$20/mo</td></tr>
+    <tr><td>v0 (Vercel)</td><td>Code-gen</td><td>React/Next UI</td><td>Yes</td><td>$20/mo</td></tr>
+    <tr><td>Replit Agent</td><td>Code-gen</td><td>Full-stack, in-browser</td><td>Yes</td><td>$15/mo</td></tr>
+    <tr><td>Cursor</td><td>Code-gen</td><td>Developers, full control</td><td>Yes</td><td>$20/mo</td></tr>
+    <tr><td>Claude Code</td><td>Code-gen</td><td>Agentic, terminal-native</td><td>Yes</td><td>$20/mo</td></tr>
+  </tbody>
+</table></div>
+
+<h2>No-code vs code-gen: the real difference</h2>
+<p>No-code platforms (Bubble, FlutterFlow) are fastest for non-technical users but lock you into their
+runtime — leaving is hard. Code-generation agents (Cursor, Claude Code, Lovable) produce real, portable
+code you can host anywhere, which matters the moment you need custom logic or a fair price at scale.</p>
+
+<h2>How to choose</h2>
+<ul>
+  <li><strong>Non-technical, need it yesterday:</strong> Lovable or v0 for web, FlutterFlow for mobile.</li>
+  <li><strong>Developer, want control and portability:</strong> Cursor or Claude Code.</li>
+  <li><strong>Complex business logic, will stay put:</strong> Bubble.</li>
+  <li><strong>Tight budget, learning:</strong> Replit Agent's free tier.</li>
+</ul>
+
+<h2>The cost nobody mentions</h2>
+<p>Subscriptions are the visible cost. The hidden one is <strong>API tokens if your app calls an LLM</strong>.
+A viral feature can turn a $20/mo plan into a four-figure bill overnight. Model the spend first with our
+<a class="link" href="../ai-cost-calculator.html">AI Cost Calculator</a>, and compare model prices in our
+<a class="link" href="../model-compare.html">LLM Model Compare</a> tool before you commit.</p>
+
+<h2>Verdict</h2>
+<p>There is no single "best." For a portable, ownable MVP built by someone willing to learn a little, a
+code-gen agent wins. For pure speed with zero learning curve, Lovable or v0. Pick by who you are, not by
+the loudest marketing.</p>
+
+<h2>Tools with offers</h2>
+<div class="aff-box">
+  <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Build & ship faster</span></div>
+  <ul class="aff-list">
+    <li><a class="aff-link" href="https://example.com/aff/lovable" target="_blank" rel="sponsored nofollow noopener">Lovable &rarr;</a><p class="aff-blurb">Describe an app, get a deployable MVP.</p></li>
+    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI-first editor for full control.</p></li>
+    <li><a class="aff-link" href="https://example.com/aff/flutterflow" target="_blank" rel="sponsored nofollow noopener">FlutterFlow &rarr;</a><p class="aff-blurb">No-code mobile + cross-platform.</p></li>
+  </ul>
+  <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
+</div>
+'''
+  },
 }
 
 def build_blog_index():
-    meta = 'Practical how-to guides for developers and everyday users: JSON formatting, Unix timestamps, image compression, and more.'
+    meta = 'Practical how-to guides for vibe coding and AI-assisted development: tool comparisons, cost-saving workflows, and step-by-step build walkthroughs.'
     schema = '{"@context":"https://schema.org","@type":"Blog","name":"Vibe Coding Tools Blog","description":"'+meta.replace('"','\\"')+'"}'
     hero = ('''<div class="t-tool-hero article-hero">
       <div class="crumb"><a href="../index.html">Vibe Coding Tools</a> / Blog</div>
@@ -1225,10 +1483,10 @@ def build_about():
     article = ('''
 <article class="article">
   <h2>What Vibe Coding Tools is</h2>
-  <p>Vibe Coding Tools is a growing collection of small, focused utilities for developers and everyday users:
-  a JSON formatter, a JWT debugger, a timestamp converter, a UUID generator, a URL parser, a contrast
-  checker, an image compressor, a QR code generator, a unit converter, and more. Every tool solves one
-  concrete problem and does it well.</p>
+  <p>Vibe Coding Tools is a growing collection of small, focused utilities for developers building with AI:
+  an AI Cost Calculator, an LLM Model Compare, a Prompt Generator, a CLAUDE.md Generator, a Project Brief
+  Generator, an AI PR Review checklist, and an AI Security Checklist. Every tool solves one concrete
+  problem and does it well — and runs entirely in your browser.</p>
 
   <h2>Who maintains it</h2>
   <p>Vibe Coding Tools is designed, built, and maintained by <strong>David Dai</strong>, an independent developer.
@@ -1310,6 +1568,11 @@ def main():
     for slug in BLOG:
         with open(os.path.join(OUT, 'blog', slug + '.html'), 'w', encoding='utf-8') as f:
             f.write(build_blog_post(slug))
+    # per-model pricing pages (programmatic SEO)
+    os.makedirs(os.path.join(OUT, 'models'), exist_ok=True)
+    for m in MODELS:
+        with open(os.path.join(OUT, 'models', m['id'] + '.html'), 'w', encoding='utf-8') as f:
+            f.write(build_model_page(m))
     # about + contact
     with open(os.path.join(OUT, 'about.html'), 'w', encoding='utf-8') as f:
         f.write(build_about())
@@ -1323,6 +1586,8 @@ def main():
     urls.append('https://vibe.david-cells.com/blog/')
     for slug in BLOG:
         urls.append('https://vibe.david-cells.com/blog/' + slug + '.html')
+    for m in MODELS:
+        urls.append('https://vibe.david-cells.com/models/' + m['id'] + '.html')
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for u in urls:
         sitemap += '  <url><loc>' + u + '</loc></url>\n'

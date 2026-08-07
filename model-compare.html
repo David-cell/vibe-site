@@ -65,22 +65,23 @@
 <table class="cmp">
   <thead><tr><th>Model</th><th>Context</th><th>In $/1M</th><th>Out $/1M</th><th>Best for</th></tr></thead>
   <tbody id="cmpBody">
-    <tr data-use="coding,reasoning"><td>GPT-5.5</td><td>128K</td><td>5.0</td><td>30.0</td><td>Flagship, all-round</td></tr>
-<tr data-use="coding,cheap,reasoning"><td>GPT-5.4</td><td>128K</td><td>2.5</td><td>15.0</td><td>Mid-tier value</td></tr>
-<tr data-use="cheap,coding"><td>GPT-5.4 Nano</td><td>128K</td><td>0.2</td><td>1.25</td><td>Routing, high volume</td></tr>
-<tr data-use="coding,reasoning"><td>Claude Opus 4.8</td><td>200K</td><td>5.0</td><td>25.0</td><td>Top agentic coding</td></tr>
-<tr data-use="coding,reasoning,long"><td>Claude Sonnet 5</td><td>1M</td><td>3.0</td><td>15.0</td><td>Best-value coding</td></tr>
-<tr data-use="cheap,coding"><td>Claude Haiku 4.5</td><td>200K</td><td>1.0</td><td>5.0</td><td>Fast, cheap</td></tr>
-<tr data-use="long,reasoning,multimodal"><td>Gemini 3.1 Pro</td><td>1M</td><td>2.0</td><td>12.0</td><td>Huge context, value</td></tr>
-<tr data-use="cheap,long"><td>Gemini 3.5 Flash</td><td>1M</td><td>1.5</td><td>9.0</td><td>Massive volume</td></tr>
-<tr data-use="coding,cheap,reasoning"><td>DeepSeek V4 Pro</td><td>1M</td><td>0.435</td><td>0.87</td><td>Open, affordable</td></tr>
+    <tr data-use="coding,reasoning"><td>GPT-5.5</td><td>128K</td><td>5.00</td><td>30.00</td><td>Flagship, all-round</td></tr>
+<tr data-use="coding,cheap,reasoning"><td>GPT-5.4</td><td>128K</td><td>2.50</td><td>15.00</td><td>Mid-tier value</td></tr>
+<tr data-use="cheap,coding"><td>GPT-5.4 Nano</td><td>128K</td><td>0.20</td><td>1.25</td><td>Routing, high volume</td></tr>
+<tr data-use="coding,reasoning"><td>Claude Opus 4.8</td><td>200K</td><td>5.00</td><td>25.00</td><td>Top agentic coding</td></tr>
+<tr data-use="coding,reasoning,long"><td>Claude Sonnet 5</td><td>1M</td><td>3.00</td><td>15.00</td><td>Best-value coding</td></tr>
+<tr data-use="cheap,coding"><td>Claude Haiku 4.5</td><td>200K</td><td>1.00</td><td>5.00</td><td>Fast, cheap</td></tr>
+<tr data-use="long,reasoning,multimodal"><td>Gemini 3.1 Pro</td><td>1M</td><td>2.00</td><td>12.00</td><td>Huge context, value</td></tr>
+<tr data-use="cheap,long"><td>Gemini 3.5 Flash</td><td>1M</td><td>1.50</td><td>9.00</td><td>Massive volume</td></tr>
+<tr data-use="coding,cheap,reasoning"><td>DeepSeek V4 Pro</td><td>1M</td><td>0.43</td><td>0.87</td><td>Open, affordable</td></tr>
 <tr data-use="cheap,coding"><td>DeepSeek V4 Flash</td><td>1M</td><td>0.14</td><td>0.28</td><td>Cheapest frontier</td></tr>
-<tr data-use="long,cheap,coding"><td>Grok 4.3</td><td>2M</td><td>0.2</td><td>0.8</td><td>Largest context (2M)</td></tr>
+<tr data-use="long,cheap,coding"><td>Grok 4.3</td><td>2M</td><td>0.20</td><td>0.80</td><td>Largest context (2M)</td></tr>
 
   </tbody>
 </table>
 </div>
 <p class="hint">Indicative pricing (USD per 1M tokens). Context windows and rates shift constantly — verify on the provider site.</p>
+<p class="hint">Per-model price pages: <a href="models/gpt-5-5.html">GPT-5.5</a> &middot; <a href="models/gpt-5-4.html">GPT-5.4</a> &middot; <a href="models/gpt-5-4-nano.html">GPT-5.4 Nano</a> &middot; <a href="models/claude-opus-4-8.html">Claude Opus 4.8</a> &middot; <a href="models/claude-sonnet-5.html">Claude Sonnet 5</a> &middot; <a href="models/claude-haiku-4-5.html">Claude Haiku 4.5</a> &middot; <a href="models/gemini-3-1-pro.html">Gemini 3.1 Pro</a> &middot; <a href="models/gemini-3-5-flash.html">Gemini 3.5 Flash</a> &middot; <a href="models/deepseek-v4-pro.html">DeepSeek V4 Pro</a> &middot; <a href="models/deepseek-v4-flash.html">DeepSeek V4 Flash</a> &middot; <a href="models/grok-4-3.html">Grok 4.3</a></p>
 <script>
 function filterModels(){
   var v=document.getElementById('useFilter').value;

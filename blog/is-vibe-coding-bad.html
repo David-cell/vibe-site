@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Is Vibe Coding Bad? The Honest Answer (2026) — Vibe Coding Tools</title>
+<meta name="description" content="Vibe coding gets blamed for buggy code and job loss. Here is what the data and working developers actually say about its risks, limits, and when it is the right tool." />
+<link rel="canonical" href="https://vibe.david-cells.com/blog/is-vibe-coding-bad.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="Is Vibe Coding Bad? The Honest Answer (2026) — Vibe Coding Tools" />
+<meta property="og:description" content="Vibe coding gets blamed for buggy code and job loss. Here is what the data and working developers actually say about its risks, limits, and when it is the right tool." />
+<meta property="og:url" content="https://vibe.david-cells.com/blog/is-vibe-coding-bad.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Is Vibe Coding Bad? The Honest Answer (2026) — Vibe Coding Tools" />
+<meta name="twitter:description" content="Vibe coding gets blamed for buggy code and job loss. Here is what the data and working developers actually say about its risks, limits, and when it is the right tool." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Is Vibe Coding Bad? The Honest Answer (2026)","author":{"@type":"Organization","name":"Vibe Coding Tools"},"datePublished":"2026-08-03","publisher":{"@type":"Organization","name":"Vibe Coding Tools"}}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="../index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="../index.html""><span class="n">⌂</span><span>Home</span></a><a href="../prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="../ai-cost-calculator.html"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="../model-compare.html"><span class="n">03</span><span>LLM Model Compare</span></a><a href="../claude-md-generator.html"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="../project-brief-generator.html"><span class="n">05</span><span>Project Brief Generator</span></a><a href="../ai-pr-review.html"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="../ai-security-checklist.html"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="index.html">Blog</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><div class="t-tool-hero article-hero">
+      <div class="crumb"><a href="index.html">Blog</a> / Vibe Coding</div>
+      <h1>Is Vibe Coding Bad? The Honest Answer (2026)</h1>
+      <p class="sub">By Vibe Coding Tools · August 7, 2026 · 7 min read</p>
+    </div><article class="article">
+<p>"Vibe coding" — describing software in plain language and letting an AI write it — went from a joke to a
+daily workflow in about a year. Along the way it picked up two loud camps: people calling it a scam that
+produces unmaintainable garbage, and people calling it the end of programming jobs. Both are wrong. The
+honest answer is more useful than either extreme.</p>
+
+<h2>What "vibe coding" actually means</h2>
+<p>Vibe coding is using an AI coding assistant (Cursor, Windsurf, Claude Code, or a chat model) to generate
+code from a description rather than typing it by hand. You steer, test, and refine; the model does the
+typing. It is a spectrum, not a switch — most developers today mix AI-generated and hand-written code.</p>
+
+<h2>The real risks (they are specific, not vague)</h2>
+<p>The criticism is not baseless, but it is specific. The genuine failure modes are:</p>
+<ul>
+  <li><strong>Unreviewed code in production.</strong> AI can produce code that runs but is wrong, insecure, or unmaintainable. Shipping it without review is the actual danger.</li>
+  <li><strong>Hallucinated dependencies and APIs.</strong> Models invent libraries and functions. Left unchecked, this breaks builds and introduces supply-chain risk.</li>
+  <li><strong>No mental model.</strong> If you cannot explain how the code works, you cannot debug it at 2 a.m. Vibe coding without learning degrades your own skill.</li>
+  <li><strong>Hidden cost at scale.</strong> Generated code often resends huge context on every call; bills and latency creep up. Our <a class="link" href="../ai-cost-calculator.html">AI Cost Calculator</a> shows how fast that adds up.</li>
+</ul>
+
+<h2>Is it taking programming jobs?</h2>
+<p>Not in the way headlines claim. The data shows AI coding tools are <em>raising output per developer</em>,
+not eliminating developers. Surveys of working engineers in 2026 put daily AI-tool usage above 90% among
+US developers, and the dominant effect is "ship more" rather than "hire fewer." The people most at risk are
+those who refuse to use the tools, not the tools themselves.</p>
+
+<h2>When vibe coding is the right call</h2>
+<ul>
+  <li><strong>Prototypes and internal tools</strong> — speed matters more than perfect architecture.</li>
+  <li><strong>Boilerplate and refactors</strong> — let the model do the tedious parts.</li>
+  <li><strong>Learning a new stack</strong> — generate, then read, then understand.</li>
+</ul>
+
+<h2>When you should NOT vibe code</h2>
+<ul>
+  <li><strong>Security-critical or safety-critical code</strong> — review every line, or write it yourself.</li>
+  <li><strong>Code you will never understand</strong> — if you cannot maintain it, do not ship it.</li>
+  <li><strong>Production systems with no test coverage</strong> — generated code needs tests around it.</li>
+</ul>
+
+<h2>The balanced verdict</h2>
+<p>Vibe coding is not bad; <em>unreviewed</em> vibe coding is bad. Treat the model like a very fast, very
+confident junior engineer: great for drafts, useless without review. Pair it with a
+<a class="link" href="../ai-pr-review.html">PR review checklist</a> and an
+<a class="link" href="../ai-security-checklist.html">AI security checklist</a>, keep learning, and it
+becomes one of the highest-leverage tools you have.</p>
+
+<h2>Tools with offers</h2>
+<div class="aff-box">
+  <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Code with confidence</span></div>
+  <ul class="aff-list">
+    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Agentic coding with built-in review. Pro plan.</p></li>
+    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">Popular AI-first editor for fast iteration.</p></li>
+  </ul>
+  <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
+</div>
+</article>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="../index.html">Tools</a><a href="../blog/index.html">Blog</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="../privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>
