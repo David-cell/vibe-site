@@ -1249,7 +1249,7 @@ def build_tool(slug):
             f'<p class="sub">{html.escape(c["desc"])}</p>'
             f'</div>')
     back = '<a class="back" href="index.html">← All tools</a>'
-    body = back + SHIELD + hero + body_src + c['extra'] + TOOL_FAQ.get(slug, '')
+    body = back + SHIELD + hero + '<div class="brutal-card" style="padding:28px;">' + body_src + c['extra'] + '</div>' + TOOL_FAQ.get(slug, '')
     return page_brutalist(c['title'], c['meta'], schema, active_slug=slug, body=body, url='https://vibe.david-cells.com/' + slug + '.html')
 
 # ============================================================
