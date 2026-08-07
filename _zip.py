@@ -1,7 +1,7 @@
 import os,zipfile
 root='C:/Users/Administrator/WorkBuddy/2026-08-03-14-21-33/vibe-site'
 out=os.path.join(root,'vibe-site-deploy.zip')
-files=['site.css','og-image.png','ads.txt','robots.txt','data/models.json']
+files=['brutal.css','og-image.png','ads.txt','robots.txt','data/models.json']
 for f in os.listdir(root):
     if f.endswith('.html'): files.append(f)
     elif os.path.isdir(os.path.join(root,f)) and f not in ('__pycache__','data'):

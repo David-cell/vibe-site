@@ -234,6 +234,187 @@ def main_shell(content):
 # ============================================================
 # INDEX (dashboard)
 # ============================================================
+# ============================================================
+# SHARED NEO-BRUTALIST SHELL — used by EVERY page (incl. home)
+# ============================================================
+TW_CONFIG = r'''
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-secondary-fixed-variant":"#00530e","on-primary":"#393000","secondary-fixed":"#72ff70",
+        "tertiary-fixed":"#5df7ff","inverse-on-surface":"#343024","on-error-container":"#ffdad6",
+        "secondary":"#ecffe3","on-background":"#e9e2cf","on-tertiary-fixed":"#002021",
+        "tertiary-container":"#1bf6ff","secondary-fixed-dim":"#00e639","surface-bright":"#3d392c",
+        "primary-fixed-dim":"#e3c600","glass-tint":"rgba(255, 255, 255, 0.1)","secondary-container":"#13ff43",
+        "on-tertiary-fixed-variant":"#004f52","background":"#161308","tertiary-fixed-dim":"#00dce4",
+        "surface-container":"#222014","on-secondary":"#003907","surface-container-highest":"#383528",
+        "on-primary-container":"#716200","surface-tint":"#e3c600","swiss-accent":"#E63946",
+        "on-surface-variant":"#cfc6ab","on-primary-fixed":"#211b00","on-tertiary-container":"#006d71",
+        "inverse-primary":"#6d5e00","error":"#ffb4ab","on-tertiary":"#003739","inverse-surface":"#e9e2cf",
+        "surface-container-lowest":"#100e05","cyber-green":"#00FF41","outline":"#989177",
+        "on-primary-fixed-variant":"#524600","surface":"#161308","primary-fixed":"#ffe24a",
+        "retro-gray":"#C0C0C0","brutalist-yellow":"#FFDE00","surface-dim":"#161308","on-error":"#690005",
+        "on-secondary-container":"#007117","primary-container":"#ffde00","tertiary":"#eeffff",
+        "error-container":"#93000a","surface-variant":"#383528","primary":"#fffaf8",
+        "surface-container-low":"#1e1c10","outline-variant":"#4c4732","surface-container-high":"#2d2a1d",
+        "on-surface":"#e9e2cf","on-secondary-fixed":"#002203"
+      },
+      "borderRadius": {"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+      "spacing": {"base":"4px","gap-md":"2rem","gap-lg":"4rem","gap-sm":"1rem","gap-xs":"0.5rem","sidebar-width":"280px","container-max":"1280px"},
+      "fontFamily": {
+        "display-lg":["Fraunces"],"display-lg-mobile":["Fraunces"],"body-md":["Inter"],
+        "headline-md":["Fraunces"],"headline-sm":["Fraunces"],"label-caps":["JetBrains Mono"],
+        "code-ui":["JetBrains Mono"],"body-lg":["Inter"]
+      },
+      "fontSize": {
+        "display-lg":["48px",{"lineHeight":"1.1","letterSpacing":"-0.02em","fontWeight":"900"}],
+        "display-lg-mobile":["32px",{"lineHeight":"1.1","fontWeight":"900"}],
+        "body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}],
+        "headline-md":["32px",{"lineHeight":"1.2","fontWeight":"600"}],
+        "headline-sm":["24px",{"lineHeight":"1.3","fontWeight":"500"}],
+        "label-caps":["12px",{"lineHeight":"1","letterSpacing":"0.05em","fontWeight":"600"}],
+        "code-ui":["14px",{"lineHeight":"1.4","fontWeight":"400"}],
+        "body-lg":["18px",{"lineHeight":"1.6","fontWeight":"400"}]
+      },
+      "boxShadow": {"brutal":"4px 4px 0px #000000","brutal-hover":"2px 2px 0px #000000"}
+    }
+  }
+}'''
+
+HEAD_BRU = ('''<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>__TITLE__</title>
+<meta name="description" content="__META__"/>
+<link rel="canonical" href="__CANON__"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Vibe Coding Tools"/>
+<meta property="og:title" content="__TITLE__"/>
+<meta property="og:description" content="__META__"/>
+<meta property="og:url" content="__CANON__"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="__TITLE__"/>
+<meta name="twitter:description" content="__META__"/>
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">__TW_CONFIG__</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="__CSS__"/>
+<script type="application/ld+json">__SCHEMA__</script>
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>''')
+
+ICON = {
+  'prompt-generator':'edit_note',
+  'ai-cost-calculator':'calculate',
+  'model-compare':'database',
+  'claude-md-generator':'description',
+  'project-brief-generator':'assignment',
+  'ai-pr-review':'rate_review',
+  'ai-security-checklist':'security',
+}
+
+def brutal_sidenav(active_slug=None, page_id='', prefix=''):
+    nav = ''
+    home_cls = 'bg-black text-[#FFDE00]' if page_id=='home' else 'hover:bg-black hover:text-[#FFDE00]'
+    nav += ('<a class="flex items-center gap-sm %s p-3 brutal-border border-transparent transition-colors" href="%sindex.html">'
+            '<span class="material-symbols-outlined">home</span>'
+            '<span class="font-label-caps text-label-caps font-bold">Home</span></a>') % (home_cls, prefix)
+    for slug, num, name, blurb in TOOLS:
+        cls = 'bg-black text-[#FFDE00]' if slug==active_slug else 'hover:bg-black hover:text-[#FFDE00]'
+        nav += ('<a class="flex items-center gap-sm text-black p-3 %s brutal-border border-transparent transition-colors" href="%s%s.html">'
+                '<span class="material-symbols-outlined">%s</span>'
+                '<span class="font-label-caps text-label-caps font-bold">%s</span></a>') % (cls, prefix, slug, ICON[slug], html.escape(name))
+    def meta_cls(pid):
+        return 'bg-black text-[#FFDE00]' if page_id==pid else 'hover:bg-black hover:text-[#FFDE00]'
+    blog = ('<a class="flex items-center gap-sm text-black p-3 %s brutal-border border-transparent transition-colors" href="%sblog/index.html"><span class="material-symbols-outlined">article</span><span class="font-label-caps text-label-caps font-bold">Blog</span></a>') % (meta_cls('blog'), prefix)
+    about = ('<a class="flex items-center gap-sm text-black p-3 %s brutal-border border-transparent transition-colors" href="%sabout.html"><span class="material-symbols-outlined">info</span><span class="font-label-caps text-label-caps font-bold">About</span></a>') % (meta_cls('about'), prefix)
+    contact = ('<a class="flex items-center gap-sm text-black p-3 %s brutal-border border-transparent transition-colors" href="%scontact.html"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-label-caps font-bold">Contact</span></a>') % (meta_cls('contact'), prefix)
+    privacy = ('<a class="flex items-center gap-sm text-black p-3 %s brutal-border border-transparent transition-colors" href="%sprivacy.html"><span class="material-symbols-outlined">security</span><span class="font-label-caps text-label-caps font-bold">Privacy</span></a>') % (meta_cls('privacy'), prefix)
+    return ('''<nav class="hidden md:flex flex-col h-full w-[280px] bg-[#FFDE00] border-r-4 border-[#100e05] py-gap-sm px-gap-xs fixed left-0 top-0 z-50 text-black">
+  <div class="mb-gap-md px-3 flex flex-col gap-2">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 bg-black flex items-center justify-center brutal-shadow">
+        <span class="material-symbols-outlined text-[#FFDE00]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+      </div>
+      <div>
+        <h1 class="font-display-lg text-display-lg-mobile text-black uppercase">Vibe Coding</h1>
+        <p class="font-label-caps text-label-caps text-black font-bold">Issue 01 · Client-Side</p>
+      </div>
+    </div>
+    <div class="mt-4 bg-black text-[#FFDE00] font-label-caps text-label-caps uppercase p-2 inline-block border-2 border-black w-max">[PRIVATE ACCESS]</div>
+  </div>
+  <button class="mb-gap-sm mx-3 bg-white text-black font-label-caps text-label-caps uppercase p-3 brutal-border brutal-shadow brutal-hover transition-all flex items-center justify-center gap-2 font-bold">
+    <span class="material-symbols-outlined">add</span> All Tools
+  </button>
+  <div class="flex-1 overflow-y-auto space-y-2 mt-4">
+    __NAV__
+  </div>
+  <div class="mt-auto pt-gap-sm space-y-2">
+    __META__
+  </div>
+</nav>''').replace('__NAV__', nav).replace('__META__', blog + about + contact + privacy)
+
+def brutal_topbar(prefix=''):
+    return ('''<header class="flex justify-between items-center h-16 px-gap-md bg-surface shrink-0 z-40 border-b-4 border-[#100e05]">
+    <button class="md:hidden text-primary p-2 brutal-border bg-brutalist-yellow text-black brutal-shadow">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+    <div class="flex items-center gap-gap-md">
+      <span class="font-display-lg-mobile text-display-lg-mobile font-black text-on-surface tracking-tighter uppercase">Vibe Coding Tools</span>
+      <div class="hidden md:flex gap-4">
+        <a class="font-label-caps text-label-caps text-brutalist-yellow uppercase underline decoration-2 underline-offset-4" href="__P__blog/index.html">Blog</a>
+        <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-brutalist-yellow uppercase" href="__P__about.html">About</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <a class="font-label-caps text-label-caps bg-brutalist-yellow text-black px-4 py-2 brutal-border brutal-shadow brutal-hover uppercase font-bold hidden sm:block" href="__P__contact.html">Feedback</a>
+      <div class="flex gap-2">
+        <button class="w-10 h-10 flex items-center justify-center bg-surface-container-highest brutal-border text-on-surface brutal-hover">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+        <button class="w-10 h-10 flex items-center justify-center bg-brutalist-yellow text-black brutal-border brutal-shadow brutal-hover">
+          <span class="material-symbols-outlined">account_circle</span>
+        </button>
+      </div>
+    </div>
+  </header>''').replace('__P__', prefix)
+
+def brutal_footer(prefix=''):
+    return ('''<footer class="bg-surface-container-lowest border-t-4 border-[#100e05] py-gap-md px-gap-lg flex flex-col md:flex-row justify-between items-center gap-4 shrink-0">
+    <span class="font-label-caps text-label-caps text-on-surface-variant uppercase font-bold">© 2026 Vibe Coding Tools. Zero data collected.</span>
+    <div class="flex gap-4">
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-brutalist-yellow uppercase transition-colors" href="__P__index.html">Tools</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-brutalist-yellow uppercase transition-colors" href="__P__blog/index.html">Blog</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-brutalist-yellow uppercase transition-colors" href="__P__about.html">About</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-brutalist-yellow uppercase transition-colors" href="__P__contact.html">Contact</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-brutalist-yellow uppercase transition-colors" href="__P__privacy.html">Privacy</a>
+    </div>
+  </footer>''').replace('__P__', prefix)
+
+def page_brutalist(title, meta, schema, active_slug=None, page_id='', body='', url='https://vibe.david-cells.com/', prefix=''):
+    head = (HEAD_BRU.replace('__TITLE__', title).replace('__META__', meta)
+            .replace('__CANON__', url).replace('__SCHEMA__', schema)
+            .replace('__CSS__', prefix + 'brutal.css').replace('__TW_CONFIG__', TW_CONFIG))
+    chrome = ('<body class="bg-background text-on-surface font-body-md h-screen overflow-hidden flex selection:bg-brutalist-yellow selection:text-black">\n'
+              + brutal_sidenav(active_slug, page_id, prefix)
+              + '<div class="flex-1 flex flex-col md:ml-[280px] h-screen overflow-hidden bg-background">\n'
+              + brutal_topbar(prefix)
+              + '<main class="flex-1 overflow-y-auto p-gap-md lg:p-gap-lg"><div class="max-w-container-max mx-auto space-y-6">\n'
+              + body
+              + '\n</div></main>\n'
+              + brutal_footer(prefix)
+              + '</div>\n</body></html>')
+    return head + chrome
+
 def build_index():
     meta = 'Free, privacy-first vibe coding tools: a prompt builder, an AI cost calculator, an LLM model compare, a CLAUDE.md generator, a project brief generator, and AI code review + security checklists. 100% client-side.'
     schema = ('{"@context":"https://schema.org","@type":"WebSite","name":"Vibe Coding Tools","url":"https://vibe.david-cells.com/",'
@@ -1062,19 +1243,14 @@ def build_tool(slug):
         links = ' &middot; '.join('<a href="models/%s.html">%s</a>' % (mm['id'], html.escape(mm['label'])) for mm in MODELS)
         body_src = body_src.replace('__MODEL_PAGES__', '<p class="hint">Per-model price pages: ' + links + '</p>')
     schema = webapp_schema('Vibe Coding Tools — ' + name, slug, c['features'])
-    topbar = f'''
-<div class="topbar">
-  <div class="greet">Tool <b>{num} · {html.escape(name)}</b></div>
-  <div class="tag"><span class="dot"></span>Live</div>
-</div>'''
     hero = (f'<div class="t-tool-hero">'
             f'<div class="crumb">Tools / {num} · {html.escape(name)}</div>'
             f'<h1>{html.escape(name)}</h1>'
             f'<p class="sub">{html.escape(c["desc"])}</p>'
             f'</div>')
     back = '<a class="back" href="index.html">← All tools</a>'
-    body = back + topbar + SHIELD + hero + body_src + c['extra'] + TOOL_FAQ.get(slug, '') + footer()
-    return page(c['title'], c['meta'], schema, body, active_slug=slug, url='https://vibe.david-cells.com/' + slug + '.html')
+    body = back + SHIELD + hero + body_src + c['extra'] + TOOL_FAQ.get(slug, '')
+    return page_brutalist(c['title'], c['meta'], schema, active_slug=slug, body=body, url='https://vibe.david-cells.com/' + slug + '.html')
 
 # ============================================================
 # PER-MODEL PRICING PAGES (programmatic SEO — one page per model)
@@ -1131,8 +1307,8 @@ def build_model_page(m):
       <dt>How do I estimate my own %s bill?</dt>
       <dd>Use the <a class="link" href="../ai-cost-calculator.html">AI Cost Calculator</a> — enter your tokens and volume and see the monthly cost instantly, with and without prompt caching.</dd>
     </dl>''' % (label, pin, pout, label, m['context'], label, label))
-    body = hero + '<article class="article">' + table + example + compare_block + faq + '</article>' + footer(prefix)
-    return page(title, meta, schema, body, prefix=prefix, page_id='', url='https://vibe.david-cells.com/models/' + slug + '.html')
+    body = hero + '<article class="article">' + table + example + compare_block + faq + '</article>'
+    return page_brutalist(title, meta, schema, body=body, prefix=prefix, url='https://vibe.david-cells.com/models/' + slug + '.html')
 
 # ============================================================
 # BLOG
@@ -1595,8 +1771,8 @@ def build_blog_index():
           <p>{html.escape(c['excerpt'])}</p>
           <span class="read">{html.escape(c['read'])} · {html.escape(c['date'])}</span>
         </a>''')
-    body = hero + '<div class="post-grid">' + posts + '</div>' + footer('../')
-    return page('Blog — Vibe Coding Tools', meta, schema, body, prefix='../', page_id='blog', url='https://vibe.david-cells.com/blog/')
+    body = hero + '<div class="post-grid">' + posts + '</div>'
+    return page_brutalist('Blog — Vibe Coding Tools', meta, schema, body=body, prefix='../', page_id='blog', url='https://vibe.david-cells.com/blog/')
 
 def build_blog_post(slug):
     c = BLOG[slug]
@@ -1611,8 +1787,8 @@ def build_blog_post(slug):
       <p class="sub">By Vibe Coding Tools · {html.escape(c['date'])} · {html.escape(c['read'])}</p>
     </div>''')
     aff = aff_callout(AFF_BY_POST[slug]) if slug in AFF_BY_POST else ''
-    body = hero + '<article class="article">' + c['body'] + '</article>' + aff + footer('../')
-    return page(c['title'] + ' — Vibe Coding Tools', meta, schema, body, prefix='../', page_id='blog', url='https://vibe.david-cells.com/blog/' + slug + '.html')
+    body = hero + '<article class="article">' + c['body'] + '</article>' + aff
+    return page_brutalist(c['title'] + ' — Vibe Coding Tools', meta, schema, body=body, prefix='../', page_id='blog', url='https://vibe.david-cells.com/blog/' + slug + '.html')
 
 # ============================================================
 # PRIVACY POLICY
@@ -1668,8 +1844,8 @@ def build_privacy():
     article += ('<div class="callout">Bottom line: the tools themselves collect nothing. The only tracking on this site '
                 'comes from third-party ad networks, which you can opt out of at any time.</div>')
     article += '</article>'
-    body = hero + toc + article + footer()
-    return page('Privacy Policy — Vibe Coding Tools', meta, schema, body, page_id='privacy', url='https://vibe.david-cells.com/privacy.html')
+    body = hero + toc + article
+    return page_brutalist('Privacy Policy — Vibe Coding Tools', meta, schema, body=body, page_id='privacy', url='https://vibe.david-cells.com/privacy.html')
 
 # ============================================================
 def build_about():
@@ -1717,8 +1893,8 @@ def build_about():
   processing is safer.</p>
 </article>
 ''')
-    body = hero + article + footer()
-    return page('About Vibe Coding Tools — Privacy-first developer tools', meta, schema, body, page_id='about', url='https://vibe.david-cells.com/about.html')
+    body = hero + article
+    return page_brutalist('About Vibe Coding Tools — Privacy-first developer tools', meta, schema, body=body, page_id='about', url='https://vibe.david-cells.com/about.html')
 
 # ============================================================
 def build_contact():
@@ -1752,8 +1928,8 @@ def build_contact():
   every tool works, and the <a class="link" href="about.html">About</a> page explains the project's philosophy.</div>
 </article>
 ''')
-    body = hero + article + footer()
-    return page('Contact Vibe Coding Tools — Get in touch', meta, schema, body, page_id='contact', url='https://vibe.david-cells.com/contact.html')
+    body = hero + article
+    return page_brutalist('Contact Vibe Coding Tools — Get in touch', meta, schema, body=body, page_id='contact', url='https://vibe.david-cells.com/contact.html')
 
 # ============================================================
 def main():
