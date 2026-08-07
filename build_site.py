@@ -352,16 +352,16 @@ def brutal_sidenav(active_slug=None, page_id='', prefix=''):
     </div>
     <div class="mt-4 bg-black text-[#FFDE00] font-label-caps text-label-caps uppercase p-2 inline-block border-2 border-black w-max">[PRIVATE ACCESS]</div>
   </div>
-  <button class="mb-gap-sm mx-3 bg-white text-black font-label-caps text-label-caps uppercase p-3 brutal-border brutal-shadow brutal-hover transition-all flex items-center justify-center gap-2 font-bold">
+  <a href="__ALLTOOLS__" class="mb-gap-sm mx-3 bg-white text-black font-label-caps text-label-caps uppercase p-3 brutal-border brutal-shadow brutal-hover transition-all flex items-center justify-center gap-2 font-bold">
     <span class="material-symbols-outlined">add</span> All Tools
-  </button>
+  </a>
   <div class="flex-1 overflow-y-auto space-y-2 mt-4">
     __NAV__
   </div>
   <div class="mt-auto pt-gap-sm space-y-2">
     __META__
   </div>
-</nav>''').replace('__NAV__', nav).replace('__META__', blog + about + contact + privacy)
+</nav>''').replace('__NAV__', nav).replace('__META__', blog + about + contact + privacy).replace('__ALLTOOLS__', prefix + 'index.html')
 
 def brutal_topbar(prefix=''):
     return ('''<header class="flex justify-between items-center h-16 px-gap-md bg-surface shrink-0 z-40 border-b-4 border-[#100e05]">
@@ -552,9 +552,9 @@ tailwind.config = {
     </div>
     <div class="mt-4 bg-black text-[#FFDE00] font-label-caps text-label-caps uppercase p-2 inline-block border-2 border-black w-max">[PRIVATE ACCESS]</div>
   </div>
-  <button class="mb-gap-sm mx-3 bg-white text-black font-label-caps text-label-caps uppercase p-3 brutal-border brutal-shadow brutal-hover transition-all flex items-center justify-center gap-2 font-bold">
+  <a href="index.html" class="mb-gap-sm mx-3 bg-white text-black font-label-caps text-label-caps uppercase p-3 brutal-border brutal-shadow brutal-hover transition-all flex items-center justify-center gap-2 font-bold">
     <span class="material-symbols-outlined">add</span> All Tools
-  </button>
+  </a>
   <div class="flex-1 overflow-y-auto space-y-2 mt-4">
     <a class="flex items-center gap-sm bg-black text-[#FFDE00] p-3 brutal-border" href="index.html">
       <span class="material-symbols-outlined">home</span>
