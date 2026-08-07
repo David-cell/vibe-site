@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CLAUDE.md Generator — Project Rules AI Agents Follow | Vibe Coding Tools</title>
+<meta name="description" content="Generate a CLAUDE.md, AGENTS.md, .cursorrules, or GEMINI.md for your project in seconds. Pick stack, conventions, and guardrails; copy clean Markdown." />
+<link rel="canonical" href="https://vibe.david-cells.com/claude-md-generator.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="CLAUDE.md Generator — Project Rules AI Agents Follow | Vibe Coding Tools" />
+<meta property="og:description" content="Generate a CLAUDE.md, AGENTS.md, .cursorrules, or GEMINI.md for your project in seconds. Pick stack, conventions, and guardrails; copy clean Markdown." />
+<meta property="og:url" content="https://vibe.david-cells.com/claude-md-generator.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CLAUDE.md Generator — Project Rules AI Agents Follow | Vibe Coding Tools" />
+<meta name="twitter:description" content="Generate a CLAUDE.md, AGENTS.md, .cursorrules, or GEMINI.md for your project in seconds. Pick stack, conventions, and guardrails; copy clean Markdown." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Vibe Coding Tools — CLAUDE.md Generator","url":"https://vibe.david-cells.com/claude-md-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":"Generate AI-agent project rule files (CLAUDE.md, AGENTS.md, .cursorrules, GEMINI.md) from stack and conventions, fully client-side","browserRequirements":"Requires JavaScript"}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="index.html""><span class="n">⌂</span><span>Home</span></a><a href="prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="ai-cost-calculator.html"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="model-compare.html"><span class="n">03</span><span>LLM Model Compare</span></a><a href="claude-md-generator.html" class="active"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="project-brief-generator.html"><span class="n">05</span><span>Project Brief Generator</span></a><a href="ai-pr-review.html"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="ai-security-checklist.html"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="blog/index.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><a class="back" href="index.html">← All tools</a>
+<div class="topbar">
+  <div class="greet">Tool <b>04 · CLAUDE.md Generator</b></div>
+  <div class="tag"><span class="dot"></span>Live</div>
+</div><div class="shield"><b>Private</b> Everything runs in your browser. No uploads, no tracking, no signup.<span class="x">/ zero data collected</span></div><div class="t-tool-hero"><div class="crumb">Tools / 04 · CLAUDE.md Generator</div><h1>CLAUDE.md Generator</h1><p class="sub">Describe your project once and get a ready-to-paste rule file that keeps Cursor, Claude Code, and friends on track.</p></div>
+<label for="projName">Project name</label>
+<input id="projName" type="text" value="My App" />
+<label for="projType">Project type</label>
+<select id="projType">
+  <option value="web-app">Web app / SaaS</option>
+  <option value="api">API / backend service</option>
+  <option value="library">Library / package</option>
+  <option value="cli">CLI tool</option>
+  <option value="mobile">Mobile app</option>
+  <option value="game">Game</option>
+</select>
+<label for="stack">Tech stack (one per line)</label>
+<textarea id="stack" rows="3">TypeScript
+React
+Node.js (Express)
+PostgreSQL</textarea>
+<label>Conventions (check all that apply)</label>
+<div class="checks">
+  <label class="chk"><input type="checkbox" id="cTs" checked /> Use TypeScript strict mode</label>
+  <label class="chk"><input type="checkbox" id="cTests" checked /> Write tests for new logic</label>
+  <label class="chk"><input type="checkbox" id="cNostyle" /> Keep styles in CSS files</label>
+  <label class="chk"><input type="checkbox" id="cNoconsole" checked /> No console.log in production</label>
+  <label class="chk"><input type="checkbox" id="cSmall" /> Small, focused commits</label>
+  <label class="chk"><input type="checkbox" id="cExplain" /> Explain non-obvious decisions</label>
+</div>
+<label for="guard">Guardrails — things the AI must NOT do</label>
+<textarea id="guard" rows="3">Don't add dependencies without asking.
+Don't rewrite working code "to clean it up".
+Don't skip type checks or tests.</textarea>
+<label for="fileFmt">Output format</label>
+<select id="fileFmt">
+  <option value="claude">CLAUDE.md</option>
+  <option value="agents">AGENTS.md</option>
+  <option value="cursor">.cursorrules</option>
+  <option value="gemini">GEMINI.md</option>
+</select>
+<div class="row">
+  <button class="act" onclick="genClaudeMd()">Generate rule file</button>
+  <button class="ghost noflex" onclick="copyClaudeMd()">Copy</button>
+</div>
+<textarea id="mdOut" class="mdout" readonly placeholder="Your generated rule file appears here..."></textarea>
+<p class="hint">Everything is assembled in your browser. Nothing is uploaded. Copy the output into a file named after the format you picked.</p>
+<script>
+function genClaudeMd(){
+  var name=document.getElementById('projName').value.trim()||'My Project';
+  var type=document.getElementById('projType').value;
+  var stack=document.getElementById('stack').value.split(String.fromCharCode(10)).map(function(s){return s.trim();}).filter(Boolean);
+  var typeTxt={'web-app':'a web application / SaaS','api':'an API or backend service','library':'a library or package','cli':'a command-line tool','mobile':'a mobile app','game':'a game'}[type];
+  var convs=[];
+  if(document.getElementById('cTs').checked) convs.push('- Enforce TypeScript strict mode; avoid <code>any</code> unless justified.');
+  if(document.getElementById('cTests').checked) convs.push('- Write unit tests for new business logic and run them before reporting done.');
+  if(document.getElementById('cNostyle').checked) convs.push('- Keep styles in CSS files; avoid large inline style attributes.');
+  if(document.getElementById('cNoconsole').checked) convs.push('- Never leave console.log/print statements in production code.');
+  if(document.getElementById('cSmall').checked) convs.push('- Make small, focused commits with clear messages.');
+  if(document.getElementById('cExplain').checked) convs.push('- Briefly explain non-obvious or risky decisions in comments.');
+  var guard=document.getElementById('guard').value.split(String.fromCharCode(10)).map(function(s){return s.trim();}).filter(Boolean);
+  var fmt=document.getElementById('fileFmt').value;
+  var fmtName={'claude':'CLAUDE.md','agents':'AGENTS.md','cursor':'.cursorrules','gemini':'GEMINI.md'}[fmt];
+  var L=[];
+  L.push('# '+name);
+  L.push('');
+  L.push('You are assisting with '+typeTxt+'. Follow this file exactly.');
+  L.push('');
+  L.push('## Stack');
+  for(var i=0;i<stack.length;i++){ L.push('- '+stack[i]); }
+  L.push('');
+  L.push('## Conventions');
+  for(var i=0;i<convs.length;i++){ L.push(convs[i]); }
+  L.push('');
+  L.push('## Workflow');
+  L.push('- Read the relevant files before editing; prefer targeted diffs over full rewrites.');
+  L.push('- After changes, run the type check and tests, and fix what breaks.');
+  L.push('- Ask before adding new dependencies or making structural changes.');
+  L.push('');
+  L.push('## Guardrails (do NOT do these)');
+  for(var i=0;i<guard.length;i++){ L.push('- '+guard[i]); }
+  L.push('');
+  L.push('_Generated by Vibe Coding Tools ('+fmtName+'). Edit freely._');
+  document.getElementById('mdOut').value=L.join(String.fromCharCode(10));
+}
+function copyClaudeMd(){
+  var t=document.getElementById('mdOut');
+  if(!t.value){ genClaudeMd(); }
+  if(navigator.clipboard){ navigator.clipboard.writeText(t.value).catch(function(){}); }
+  else { t.select(); try{ document.execCommand('copy'); }catch(e){} }
+}
+genClaudeMd();
+</script><p><a href="blog/write-claude-md.html">How to write a great CLAUDE.md (2026 guide) &rarr;</a></p>
+<h2>Frequently asked questions</h2>
+<dl class="faq">
+  <dt>What is a CLAUDE.md / AGENTS.md?</dt>
+  <dd>It is a plain-text rule file in your repo root that tells AI coding agents (Claude Code, Cursor, Windsurf, Gemini CLI) your stack, conventions, and guardrails. Agents read it on every task so they stay consistent instead of guessing.</dd>
+  <dt>Which format should I pick?</dt>
+  <dd>CLAUDE.md for Claude Code, AGENTS.md for the open Agents standard, .cursorrules for older Cursor setups, GEMINI.md for Gemini CLI. They hold the same content &mdash; pick the tool you use, or keep all four in sync.</dd>
+  <dt>Does this generator upload my project info?</dt>
+  <dd>No. The file is assembled entirely in your browser from your inputs. Nothing is sent anywhere.</dd>
+  <dt>Is the output good enough to ship?</dt>
+  <dd>It is a strong starting point. Paste it in, then tweak the guardrails to match how you actually want the agent to behave.</dd>
+</dl>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="index.html">Tools</a><a href="blog/index.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Cost Calculator — Estimate API Spend | Vibe Coding Tools</title>
+<meta name="description" content="Estimate the monthly cost of any AI model API before you generate. Enter tokens and volume, get dollars — fully client-side." />
+<link rel="canonical" href="https://vibe.david-cells.com/ai-cost-calculator.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="AI Cost Calculator — Estimate API Spend | Vibe Coding Tools" />
+<meta property="og:description" content="Estimate the monthly cost of any AI model API before you generate. Enter tokens and volume, get dollars — fully client-side." />
+<meta property="og:url" content="https://vibe.david-cells.com/ai-cost-calculator.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Cost Calculator — Estimate API Spend | Vibe Coding Tools" />
+<meta name="twitter:description" content="Estimate the monthly cost of any AI model API before you generate. Enter tokens and volume, get dollars — fully client-side." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Vibe Coding Tools — AI Cost Calculator","url":"https://vibe.david-cells.com/ai-cost-calculator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":"Estimate AI API cost by model, tokens, and monthly volume, fully client-side","browserRequirements":"Requires JavaScript"}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="index.html""><span class="n">⌂</span><span>Home</span></a><a href="prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="ai-cost-calculator.html" class="active"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="model-compare.html"><span class="n">03</span><span>LLM Model Compare</span></a><a href="claude-md-generator.html"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="project-brief-generator.html"><span class="n">05</span><span>Project Brief Generator</span></a><a href="ai-pr-review.html"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="ai-security-checklist.html"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="blog/index.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><a class="back" href="index.html">← All tools</a>
+<div class="topbar">
+  <div class="greet">Tool <b>02 · AI Cost Calculator</b></div>
+  <div class="tag"><span class="dot"></span>Live</div>
+</div><div class="shield"><b>Private</b> Everything runs in your browser. No uploads, no tracking, no signup.<span class="x">/ zero data collected</span></div><div class="t-tool-hero"><div class="crumb">Tools / 02 · AI Cost Calculator</div><h1>AI Cost Calculator</h1><p class="sub">Pick a model, enter tokens per request and monthly volume, and see the bill before you build.</p></div>
+<label for="modelSel">Model</label>
+<select id="modelSel">
+  <option value="gpt-5-5">GPT-5.5</option>
+<option value="gpt-5-4">GPT-5.4</option>
+<option value="gpt-5-4-nano">GPT-5.4 Nano</option>
+<option value="claude-opus-4-8">Claude Opus 4.8</option>
+<option value="claude-sonnet-5">Claude Sonnet 5</option>
+<option value="claude-haiku-4-5">Claude Haiku 4.5</option>
+<option value="gemini-3-1-pro">Gemini 3.1 Pro</option>
+<option value="gemini-3-5-flash">Gemini 3.5 Flash</option>
+<option value="deepseek-v4-pro">DeepSeek V4 Pro</option>
+<option value="deepseek-v4-flash">DeepSeek V4 Flash</option>
+<option value="grok-4-3">Grok 4.3</option>
+
+</select>
+<label for="ctxTok">System / context tokens <em>per request</em> (sent every call)</label>
+<input id="ctxTok" type="number" value="4000" min="0" />
+<label for="inTok">New input tokens <em>per request</em> (this turn)</label>
+<input id="inTok" type="number" value="2000" min="0" />
+<label for="outTok">Output tokens / request</label>
+<input id="outTok" type="number" value="800" min="0" />
+<label for="reqMo">Requests / month</label>
+<input id="reqMo" type="number" value="10000" min="0" />
+<label class="chk" style="margin:10px 0 4px"><input type="checkbox" id="cacheChk" /> Use prompt caching (cached tokens billed at ~10%)</label>
+<div class="row">
+  <button class="act" onclick="calcCost()">Calculate cost</button>
+  <button class="ghost noflex" onclick="resetCost()">Reset</button>
+</div>
+<div class="out" id="costOut">—</div>
+<p class="hint">Context tokens (system prompt + conversation history + reused code) are resent on every call, so they dominate spend. Caching the stable prefix cuts that portion ~90%. Prices are indicative per-million-token rates (USD) and change often.</p>
+<script>
+var COST = {'gpt-5-5':[5.0,30.0], 'gpt-5-4':[2.5,15.0], 'gpt-5-4-nano':[0.2,1.25], 'claude-opus-4-8':[5.0,25.0], 'claude-sonnet-5':[3.0,15.0], 'claude-haiku-4-5':[1.0,5.0], 'gemini-3-1-pro':[2.0,12.0], 'gemini-3-5-flash':[1.5,9.0], 'deepseek-v4-pro':[0.435,0.87], 'deepseek-v4-flash':[0.14,0.28], 'grok-4-3':[0.2,0.8]};
+function calcCost(){
+  var m=document.getElementById('modelSel').value;
+  var ctx=parseFloat(document.getElementById('ctxTok').value)||0;
+  var it=parseFloat(document.getElementById('inTok').value)||0;
+  var ot=parseFloat(document.getElementById('outTok').value)||0;
+  var n=parseFloat(document.getElementById('reqMo').value)||0;
+  var cached=document.getElementById('cacheChk').checked;
+  var p=COST[m];
+  var ctxRate=cached?p[0]*0.1:p[0];
+  var ctxCost=n*(ctx/1000000)*ctxRate;
+  var inCost=n*(it/1000000)*p[0];
+  var outCost=n*(ot/1000000)*p[1];
+  var total=ctxCost+inCost+outCost;
+  var ctxShare=total>0?(ctxCost/total*100):0;
+  var o=document.getElementById('costOut');
+  o.className='out ok';
+  var html='Estimated monthly cost: <b>$'+total.toFixed(2)+'</b><br>';
+  html+='Context: $'+ctxCost.toFixed(2)+' &middot; New input: $'+inCost.toFixed(2)+' &middot; Output: $'+outCost.toFixed(2)+'<br>';
+  html+='Context is <b>'+ctxShare.toFixed(0)+'%</b> of your spend'+(cached?' (cached @10%)':'')+'<br>';
+  if(cached){
+    var noCache=n*(ctx/1000000)*p[0];
+    html+='Caching saves <b>$'+(noCache-ctxCost).toFixed(2)+'/mo</b> on context';
+  } else {
+    html+='Turn on caching to cut context cost ~90%';
+  }
+  o.innerHTML=html;
+}
+function resetCost(){
+  document.getElementById('ctxTok').value=4000;
+  document.getElementById('inTok').value=2000;
+  document.getElementById('outTok').value=800;
+  document.getElementById('reqMo').value=10000;
+  document.getElementById('cacheChk').checked=false;
+  calcCost();
+}
+calcCost();
+</script><p><a href="blog/cursor-vs-windsurf.html">Compare the best vibe coding tools →</a></p>
+<p><a href="blog/reduce-ai-coding-cost.html">Cut your AI coding bill with prompt caching →</a></p>
+<h2>Frequently asked questions</h2>
+<dl class="faq">
+  <dt>Are the prices accurate?</dt>
+  <dd>They are indicative per-million-token rates captured at build time. Providers change pricing often and use tiered or cached pricing, so treat the result as a planning estimate and confirm on the official pricing page before committing a budget.</dd>
+  <dt>Does this calculator upload my inputs?</dt>
+  <dd>No. All math runs in your browser. No token counts, model choices, or volumes leave your device.</dd>
+  <dt>Which models are included?</dt>
+  <dd>The most common API models from OpenAI, Anthropic, Google, DeepSeek, and Meta (hosted). It is not exhaustive — add your own mental math for anything missing.</dd>
+  <dt>How do I lower my bill?</dt>
+  <dd>Use a smaller or mini model for cheap, high-volume tasks, cache long system prompts, and keep outputs short. The calculator shows exactly how much each lever saves.</dd>
+</dl>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="index.html">Tools</a><a href="blog/index.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Write a CLAUDE.md for Your Project (2026 Guide) — Vibe Coding Tools</title>
+<meta name="description" content="A practical 2026 guide to writing a CLAUDE.md / AGENTS.md that keeps AI coding agents on track. Includes a free generator you can use in your browser." />
+<link rel="canonical" href="https://vibe.david-cells.com/blog/write-claude-md.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="How to Write a CLAUDE.md for Your Project (2026 Guide) — Vibe Coding Tools" />
+<meta property="og:description" content="A practical 2026 guide to writing a CLAUDE.md / AGENTS.md that keeps AI coding agents on track. Includes a free generator you can use in your browser." />
+<meta property="og:url" content="https://vibe.david-cells.com/blog/write-claude-md.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Write a CLAUDE.md for Your Project (2026 Guide) — Vibe Coding Tools" />
+<meta name="twitter:description" content="A practical 2026 guide to writing a CLAUDE.md / AGENTS.md that keeps AI coding agents on track. Includes a free generator you can use in your browser." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Write a CLAUDE.md for Your Project (2026 Guide)","author":{"@type":"Organization","name":"Vibe Coding Tools"},"datePublished":"2026-08-03","publisher":{"@type":"Organization","name":"Vibe Coding Tools"}}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="../index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="../index.html""><span class="n">⌂</span><span>Home</span></a><a href="../prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="../ai-cost-calculator.html"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="../model-compare.html"><span class="n">03</span><span>LLM Model Compare</span></a><a href="../claude-md-generator.html"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="../project-brief-generator.html"><span class="n">05</span><span>Project Brief Generator</span></a><a href="../ai-pr-review.html"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="../ai-security-checklist.html"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="index.html">Blog</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><div class="t-tool-hero article-hero">
+      <div class="crumb"><a href="index.html">Blog</a> / Vibe Coding</div>
+      <h1>How to Write a CLAUDE.md for Your Project (2026 Guide)</h1>
+      <p class="sub">By Vibe Coding Tools · August 7, 2026 · 8 min read</p>
+    </div><article class="article">
+<p>If you let an AI agent edit your codebase, the single highest-leverage file you can add is a
+<strong>CLAUDE.md</strong> (or AGENTS.md, .cursorrules, GEMINI.md). It tells the agent your stack,
+your conventions, and the lines it must not cross &mdash; so it stops guessing and starts shipping
+the right thing. This guide shows you how to write one, and you can generate a starter in seconds with
+our <a class="link" href="../claude-md-generator.html">CLAUDE.md Generator</a>.</p>
+
+<h2>Why it matters</h2>
+<p>Agents are stateless between tasks. Without a rule file they re-derive your conventions every time,
+and they will happily "tidy up" working code or pull in a dependency you did not ask for. A CLAUDE.md
+removes that ambiguity. Teams report it pays for itself within a week of daily use.</p>
+
+<h2>The four sections every CLAUDE.md needs</h2>
+<ul>
+  <li><strong>Stack</strong> &mdash; list the languages, frameworks, and key libraries so the agent targets the right APIs.</li>
+  <li><strong>Conventions</strong> &mdash; TypeScript strict mode, tests required, no console.log in prod, commit style.</li>
+  <li><strong>Workflow</strong> &mdash; read before editing, prefer diffs over rewrites, run checks before reporting done.</li>
+  <li><strong>Guardrails</strong> &mdash; the things it must NOT do (add deps, rewrite working code, skip tests).</li>
+</ul>
+
+<h2>A starter template</h2>
+<p>You can hand-write this, or use the generator. A minimal version looks like:</p>
+<div class="tablewrap"><pre class="code"># My App
+
+## Stack
+- TypeScript, React, Node.js, PostgreSQL
+
+## Conventions
+- TypeScript strict mode; no &lt;code&gt;any&lt;/code&gt;
+- Write tests for new logic
+
+## Guardrails
+- Don't add dependencies without asking
+- Don't rewrite working code "to clean it up"</pre></div>
+
+<h2>Keep it in sync</h2>
+<p>When your stack changes, update the file. Agents trust it more than they trust inference, so a stale
+CLAUDE.md is worse than none. If you use multiple tools, keep CLAUDE.md, AGENTS.md, and .cursorrules
+pointing at the same rules.</p>
+
+<p>Want the polished version with copy-ready formatting? Open the
+<a class="link" href="../claude-md-generator.html">CLAUDE.md Generator</a> and export it in seconds.</p>
+
+<h2>Tools we recommend</h2>
+<div class="aff-box">
+  <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Agents that read your CLAUDE.md</span></div>
+  <ul class="aff-list">
+    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Terminal agent that reads CLAUDE.md on every task. Pro plan.</p></li>
+    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI editor that respects project rules and .cursorrules. Free tier + Pro.</p></li>
+  </ul>
+  <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
+</div>
+</article>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="../index.html">Tools</a><a href="../blog/index.html">Blog</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="../privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project Brief Generator — Explain Your Idea to AI | Vibe Coding Tools</title>
+<meta name="description" content="Turn a vague app idea into a clear, copy-ready project brief any AI coding agent can act on. Names scope, users, stack, and constraints." />
+<link rel="canonical" href="https://vibe.david-cells.com/project-brief-generator.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="Project Brief Generator — Explain Your Idea to AI | Vibe Coding Tools" />
+<meta property="og:description" content="Turn a vague app idea into a clear, copy-ready project brief any AI coding agent can act on. Names scope, users, stack, and constraints." />
+<meta property="og:url" content="https://vibe.david-cells.com/project-brief-generator.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Project Brief Generator — Explain Your Idea to AI | Vibe Coding Tools" />
+<meta name="twitter:description" content="Turn a vague app idea into a clear, copy-ready project brief any AI coding agent can act on. Names scope, users, stack, and constraints." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Vibe Coding Tools — Project Brief Generator","url":"https://vibe.david-cells.com/project-brief-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":"Turn a vague idea into a structured project brief with scope, users, features, and constraints, fully client-side","browserRequirements":"Requires JavaScript"}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="index.html""><span class="n">⌂</span><span>Home</span></a><a href="prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="ai-cost-calculator.html"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="model-compare.html"><span class="n">03</span><span>LLM Model Compare</span></a><a href="claude-md-generator.html"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="project-brief-generator.html" class="active"><span class="n">05</span><span>Project Brief Generator</span></a><a href="ai-pr-review.html"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="ai-security-checklist.html"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="blog/index.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><a class="back" href="index.html">← All tools</a>
+<div class="topbar">
+  <div class="greet">Tool <b>05 · Project Brief Generator</b></div>
+  <div class="tag"><span class="dot"></span>Live</div>
+</div><div class="shield"><b>Private</b> Everything runs in your browser. No uploads, no tracking, no signup.<span class="x">/ zero data collected</span></div><div class="t-tool-hero"><div class="crumb">Tools / 05 · Project Brief Generator</div><h1>Project Brief Generator</h1><p class="sub">Describe what you want in plain words and get a tight brief you can paste into Cursor, Claude Code, or any agent.</p></div>
+<label for="bfName">Project name</label>
+<input id="bfName" type="text" value="Habit Tracker" />
+<label for="bfWhat">What does it do? (one or two sentences)</label>
+<textarea id="bfWhat" rows="3">A mobile-friendly web app where users log daily habits and see streaks.</textarea>
+<label for="bfPlatform">Target platform</label>
+<select id="bfPlatform">
+  <option>Web app (desktop + mobile)</option><option>Mobile app</option><option>API / backend</option><option>CLI tool</option><option>Browser extension</option>
+</select>
+<label for="bfUsers">Target users</label>
+<input id="bfUsers" type="text" value="People building a daily routine" />
+<label>Must-have features</label>
+<div class="checks" id="bfFeats">
+  <label class="chk"><input type="checkbox" value="User accounts" checked /> User accounts</label>
+  <label class="chk"><input type="checkbox" value="Persistence / database" checked /> Persistence / database</label>
+  <label class="chk"><input type="checkbox" value="Email notifications" /> Email notifications</label>
+  <label class="chk"><input type="checkbox" value="Dark mode" checked /> Dark mode</label>
+  <label class="chk"><input type="checkbox" value="Export data" /> Export data</label>
+  <label class="chk"><input type="checkbox" value="Payments" /> Payments</label>
+</div>
+<label for="bfStack">Tech constraints (free text)</label>
+<input id="bfStack" type="text" value="React, Node, Postgres, deploy on Netlify" />
+<label for="bfNo">Hard constraints / must NOT do</label>
+<textarea id="bfNo" rows="2">Avoid custom servers where possible; keep it free-tier friendly.</textarea>
+<div class="row">
+  <button class="act" onclick="genBrief()">Generate brief</button>
+  <button class="ghost noflex" onclick="copyBrief()">Copy</button>
+</div>
+<textarea class="mdout" id="bfOut" readonly rows="14"></textarea>
+<script>
+function genBrief(){
+  var NL=String.fromCharCode(10);
+  var name=document.getElementById('bfName').value.trim()||'My Project';
+  var what=(document.getElementById('bfWhat').value.trim()||'Describe the product.');
+  var plat=document.getElementById('bfPlatform').value;
+  var users=document.getElementById('bfUsers').value.trim()||'End users';
+  var feats=[].slice.call(document.querySelectorAll('#bfFeats input:checked')).map(function(c){return c.value;});
+  var stack=document.getElementById('bfStack').value.trim()||'No specific stack';
+  var no=document.getElementById('bfNo').value.trim();
+  var L=[];
+  L.push('# Project Brief: '+name);
+  L.push('');
+  L.push('## What it is');
+  L.push(what);
+  L.push('');
+  L.push('## Platform');
+  L.push(plat);
+  L.push('');
+  L.push('## Target users');
+  L.push(users);
+  L.push('');
+  L.push('## Must-have features');
+  if(feats.length){ feats.forEach(function(f){ L.push('- '+f); }); }
+  else { L.push('- (none selected)'); }
+  L.push('');
+  L.push('## Tech constraints');
+  L.push(stack);
+  if(no){ L.push(''); L.push('## Hard constraints (do NOT)'); L.push(no); }
+  L.push('');
+  L.push('## Build approach');
+  L.push('Scaffold the project, implement the must-have features first, and confirm the stack before adding anything extra. Keep changes small and reviewable.');
+  document.getElementById('bfOut').value=L.join(NL);
+}
+function copyBrief(){
+  var t=document.getElementById('bfOut');
+  if(!t.value){ genBrief(); }
+  if(navigator.clipboard){ navigator.clipboard.writeText(t.value).catch(function(){}); }
+  else { t.select(); try{ document.execCommand('copy'); }catch(e){} }
+}
+genBrief();
+</script><p><a href="prompt-generator.html">Then turn it into a structured prompt →</a></p>
+<p><a href="claude-md-generator.html">Or generate a CLAUDE.md from it →</a></p>
+<h2>Frequently asked questions</h2>
+<dl class="faq">
+  <dt>Why do I need a brief if I have a prompt builder?</dt>
+  <dd>A prompt tells the agent what to build this turn. A brief captures the product: who it is for, what it must and must not do. You stay aligned across many turns instead of re-explaining the idea each time.</dd>
+  <dt>Is my idea uploaded?</dt>
+  <dd>No. The brief is assembled in your browser from your inputs. Nothing leaves your device.</dd>
+  <dt>What do I do with the output?</dt>
+  <dd>Paste it into a CLAUDE.md, a Cursor project rule, or the first message of a new chat. It works as both a spec and a guardrail.</dd>
+</dl>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="index.html">Tools</a><a href="blog/index.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>

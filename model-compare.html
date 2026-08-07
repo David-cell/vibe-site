@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LLM Model Compare — Filter by Use Case & Price | Vibe Coding Tools</title>
+<meta name="description" content="Compare leading LLMs side by side: context window, input/output price, and best-fit use case. Filter to find the right model fast." />
+<link rel="canonical" href="https://vibe.david-cells.com/model-compare.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="LLM Model Compare — Filter by Use Case & Price | Vibe Coding Tools" />
+<meta property="og:description" content="Compare leading LLMs side by side: context window, input/output price, and best-fit use case. Filter to find the right model fast." />
+<meta property="og:url" content="https://vibe.david-cells.com/model-compare.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="LLM Model Compare — Filter by Use Case & Price | Vibe Coding Tools" />
+<meta name="twitter:description" content="Compare leading LLMs side by side: context window, input/output price, and best-fit use case. Filter to find the right model fast." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Vibe Coding Tools — LLM Model Compare","url":"https://vibe.david-cells.com/model-compare.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":"Compare LLM models by context window, price, and use case with a client-side filter","browserRequirements":"Requires JavaScript"}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="index.html""><span class="n">⌂</span><span>Home</span></a><a href="prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="ai-cost-calculator.html"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="model-compare.html" class="active"><span class="n">03</span><span>LLM Model Compare</span></a><a href="claude-md-generator.html"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="project-brief-generator.html"><span class="n">05</span><span>Project Brief Generator</span></a><a href="ai-pr-review.html"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="ai-security-checklist.html"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="blog/index.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><a class="back" href="index.html">← All tools</a>
+<div class="topbar">
+  <div class="greet">Tool <b>03 · LLM Model Compare</b></div>
+  <div class="tag"><span class="dot"></span>Live</div>
+</div><div class="shield"><b>Private</b> Everything runs in your browser. No uploads, no tracking, no signup.<span class="x">/ zero data collected</span></div><div class="t-tool-hero"><div class="crumb">Tools / 03 · LLM Model Compare</div><h1>LLM Model Compare</h1><p class="sub">Filter models by what you need — coding, long context, cheap volume, or reasoning — and see the trade-offs instantly.</p></div>
+<label for="useFilter">Filter by need</label>
+<select id="useFilter" onchange="filterModels()">
+  <option value="all">All uses</option>
+  <option value="coding">Coding</option>
+  <option value="long">Long context</option>
+  <option value="cheap">Cheap / high volume</option>
+  <option value="reasoning">Reasoning</option>
+  <option value="multimodal">Multimodal</option>
+</select>
+<div class="tablewrap">
+<table class="cmp">
+  <thead><tr><th>Model</th><th>Context</th><th>In $/1M</th><th>Out $/1M</th><th>Best for</th></tr></thead>
+  <tbody id="cmpBody">
+    <tr data-use="coding,reasoning"><td>GPT-5.5</td><td>128K</td><td>5.0</td><td>30.0</td><td>Flagship, all-round</td></tr>
+<tr data-use="coding,cheap,reasoning"><td>GPT-5.4</td><td>128K</td><td>2.5</td><td>15.0</td><td>Mid-tier value</td></tr>
+<tr data-use="cheap,coding"><td>GPT-5.4 Nano</td><td>128K</td><td>0.2</td><td>1.25</td><td>Routing, high volume</td></tr>
+<tr data-use="coding,reasoning"><td>Claude Opus 4.8</td><td>200K</td><td>5.0</td><td>25.0</td><td>Top agentic coding</td></tr>
+<tr data-use="coding,reasoning,long"><td>Claude Sonnet 5</td><td>1M</td><td>3.0</td><td>15.0</td><td>Best-value coding</td></tr>
+<tr data-use="cheap,coding"><td>Claude Haiku 4.5</td><td>200K</td><td>1.0</td><td>5.0</td><td>Fast, cheap</td></tr>
+<tr data-use="long,reasoning,multimodal"><td>Gemini 3.1 Pro</td><td>1M</td><td>2.0</td><td>12.0</td><td>Huge context, value</td></tr>
+<tr data-use="cheap,long"><td>Gemini 3.5 Flash</td><td>1M</td><td>1.5</td><td>9.0</td><td>Massive volume</td></tr>
+<tr data-use="coding,cheap,reasoning"><td>DeepSeek V4 Pro</td><td>1M</td><td>0.435</td><td>0.87</td><td>Open, affordable</td></tr>
+<tr data-use="cheap,coding"><td>DeepSeek V4 Flash</td><td>1M</td><td>0.14</td><td>0.28</td><td>Cheapest frontier</td></tr>
+<tr data-use="long,cheap,coding"><td>Grok 4.3</td><td>2M</td><td>0.2</td><td>0.8</td><td>Largest context (2M)</td></tr>
+
+  </tbody>
+</table>
+</div>
+<p class="hint">Indicative pricing (USD per 1M tokens). Context windows and rates shift constantly — verify on the provider site.</p>
+<script>
+function filterModels(){
+  var v=document.getElementById('useFilter').value;
+  document.querySelectorAll('#cmpBody tr').forEach(function(tr){
+    var u=tr.getAttribute('data-use')||'';
+    tr.style.display=(v==='all'||u.indexOf(v)>=0)?'':'none';
+  });
+}
+filterModels();
+</script><p><a href="blog/cursor-vs-windsurf.html">Compare the best vibe coding tools →</a></p>
+<h2>Frequently asked questions</h2>
+<dl class="faq">
+  <dt>How do I pick the right model?</dt>
+  <dd>Start from your constraint: huge context — Gemini 3.1 Pro or Grok 4.3 (2M); cheapest volume — DeepSeek V4 Flash or Gemini 3.5 Flash; best coding — Claude Sonnet 5 or GPT-5.5. Use the filter to narrow, then verify pricing on the provider site.</dd>
+  <dt>Why do input and output prices differ?</dt>
+  <dd>Generating tokens (output) costs more compute than reading them (input), so nearly every provider charges more per output token.</dd>
+  <dt>Are these prices current?</dt>
+  <dd>They are indicative snapshots. AI pricing moves fast and often includes cached-token discounts, so confirm before budgeting.</dd>
+  <dt>Is the comparison data uploaded?</dt>
+  <dd>No. Filtering happens entirely in your browser.</dd>
+</dl>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="index.html">Tools</a><a href="blog/index.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>

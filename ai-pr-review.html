@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI PR Review Checklist — Catch Vibe Debt | Vibe Coding Tools</title>
+<meta name="description" content="A practical review checklist for AI-generated pull requests: catch scope creep, security gaps, missing tests, and silent breakage before you merge." />
+<link rel="canonical" href="https://vibe.david-cells.com/ai-pr-review.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="AI PR Review Checklist — Catch Vibe Debt | Vibe Coding Tools" />
+<meta property="og:description" content="A practical review checklist for AI-generated pull requests: catch scope creep, security gaps, missing tests, and silent breakage before you merge." />
+<meta property="og:url" content="https://vibe.david-cells.com/ai-pr-review.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI PR Review Checklist — Catch Vibe Debt | Vibe Coding Tools" />
+<meta name="twitter:description" content="A practical review checklist for AI-generated pull requests: catch scope creep, security gaps, missing tests, and silent breakage before you merge." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Vibe Coding Tools — AI PR Review Checklist","url":"https://vibe.david-cells.com/ai-pr-review.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":"Generate a copy-ready review checklist for AI-generated pull requests covering scope, security, tests, and breakage, fully client-side","browserRequirements":"Requires JavaScript"}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="index.html""><span class="n">⌂</span><span>Home</span></a><a href="prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="ai-cost-calculator.html"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="model-compare.html"><span class="n">03</span><span>LLM Model Compare</span></a><a href="claude-md-generator.html"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="project-brief-generator.html"><span class="n">05</span><span>Project Brief Generator</span></a><a href="ai-pr-review.html" class="active"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="ai-security-checklist.html"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="blog/index.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><a class="back" href="index.html">← All tools</a>
+<div class="topbar">
+  <div class="greet">Tool <b>06 · AI PR Review Checklist</b></div>
+  <div class="tag"><span class="dot"></span>Live</div>
+</div><div class="shield"><b>Private</b> Everything runs in your browser. No uploads, no tracking, no signup.<span class="x">/ zero data collected</span></div><div class="t-tool-hero"><div class="crumb">Tools / 06 · AI PR Review Checklist</div><h1>AI PR Review Checklist</h1><p class="sub">Tick the areas your change touches and get a focused review checklist plus a prompt you can hand to a reviewer or a second AI agent.</p></div>
+<p class="hint">AI pull requests tend to drift scope, skip tests, and silently break working code. Tick what your change touches, then review against the generated checklist.</p>
+<div class="checks" id="prAreas">
+  <label class="chk"><input type="checkbox" value="Scope stayed within the request" checked /> Scope stayed within the request</label>
+  <label class="chk"><input type="checkbox" value="No secrets, injection, or auth gaps" checked /> No secrets, injection, or auth gaps</label>
+  <label class="chk"><input type="checkbox" value="Tests added or updated" checked /> Tests added or updated</label>
+  <label class="chk"><input type="checkbox" value="Errors handled, no silent failures" /> Errors handled, no silent failures</label>
+  <label class="chk"><input type="checkbox" value="No unrelated features broken" checked /> No unrelated features broken</label>
+  <label class="chk"><input type="checkbox" value="No new dependencies without reason" /> No new dependencies without reason</label>
+  <label class="chk"><input type="checkbox" value="No obvious performance regressions" /> No obvious performance regressions</label>
+  <label class="chk"><input type="checkbox" value="No hardcoded keys or config leaks" /> No hardcoded keys or config leaks</label>
+</div>
+<div class="row">
+  <button class="act" onclick="genPr()">Generate checklist</button>
+  <button class="ghost noflex" onclick="copyPr()">Copy</button>
+</div>
+<textarea class="mdout" id="prOut" readonly rows="16"></textarea>
+<script>
+function genPr(){
+  var NL=String.fromCharCode(10);
+  var areas=[].slice.call(document.querySelectorAll('#prAreas input:checked')).map(function(c){return c.value;});
+  var L=[];
+  L.push('# Review this AI-generated PR');
+  L.push('');
+  L.push('Before merging, verify each checked area:');
+  L.push('');
+  if(areas.length){ areas.forEach(function(a){ L.push('- [ ] '+a); }); }
+  else { L.push('- [ ] (select at least one area)'); }
+  L.push('');
+  L.push('## Red flags to reject');
+  L.push('- Functionality that was not requested (scope creep)');
+  L.push('- New dependencies added "just in case"');
+  L.push('- Tests skipped with a comment like "should be fine"');
+  L.push('- Working features edited outside the stated scope');
+  L.push('- Hardcoded credentials, tokens, or internal URLs');
+  L.push('');
+  L.push('## Reviewer prompt');
+  L.push('Review the diff for the areas above. Report only real problems with the file and line. Do not suggest refactors beyond the change.');
+  document.getElementById('prOut').value=L.join(NL);
+}
+function copyPr(){
+  var t=document.getElementById('prOut');
+  if(!t.value){ genPr(); }
+  if(navigator.clipboard){ navigator.clipboard.writeText(t.value).catch(function(){}); }
+  else { t.select(); try{ document.execCommand('copy'); }catch(e){} }
+}
+genPr();
+</script><p><a href="ai-security-checklist.html">Open the AI code security checklist →</a></p>
+<p><a href="blog/reduce-ai-coding-cost.html">Why reviewing AI code costs less than debugging it →</a></p>
+<h2>Frequently asked questions</h2>
+<dl class="faq">
+  <dt>Why review AI pull requests differently?</dt>
+  <dd>AI-authored PRs tend to carry more issues and security findings than human PRs, often from silent scope creep. A focused checklist catches what a casual glance misses.</dd>
+  <dt>Does this scan my code?</dt>
+  <dd>No. It is a checklist generator, not a scanner. You (or a second agent) do the reviewing; this tool tells you what to look for.</dd>
+  <dt>Can I hand the output to another AI to review?</dt>
+  <dd>Yes. The generated reviewer prompt is written so a second model checks the diff without inventing unrelated refactors.</dd>
+</dl>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="index.html">Tools</a><a href="blog/index.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>

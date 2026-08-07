@@ -1,0 +1,105 @@
+{
+  "updated": "2026-08-07",
+  "source": "Indicative per-million-token USD rates. AI pricing shifts often — verify on the provider site before budgeting.",
+  "models": [
+    {
+      "id": "gpt-5-5",
+      "label": "GPT-5.5",
+      "context": "128K",
+      "in": 5.00,
+      "out": 30.00,
+      "use": ["coding", "reasoning"],
+      "best": "Flagship, all-round"
+    },
+    {
+      "id": "gpt-5-4",
+      "label": "GPT-5.4",
+      "context": "128K",
+      "in": 2.50,
+      "out": 15.00,
+      "use": ["coding", "cheap", "reasoning"],
+      "best": "Mid-tier value"
+    },
+    {
+      "id": "gpt-5-4-nano",
+      "label": "GPT-5.4 Nano",
+      "context": "128K",
+      "in": 0.20,
+      "out": 1.25,
+      "use": ["cheap", "coding"],
+      "best": "Routing, high volume"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "label": "Claude Opus 4.8",
+      "context": "200K",
+      "in": 5.00,
+      "out": 25.00,
+      "use": ["coding", "reasoning"],
+      "best": "Top agentic coding"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "label": "Claude Sonnet 5",
+      "context": "1M",
+      "in": 3.00,
+      "out": 15.00,
+      "use": ["coding", "reasoning", "long"],
+      "best": "Best-value coding"
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "label": "Claude Haiku 4.5",
+      "context": "200K",
+      "in": 1.00,
+      "out": 5.00,
+      "use": ["cheap", "coding"],
+      "best": "Fast, cheap"
+    },
+    {
+      "id": "gemini-3-1-pro",
+      "label": "Gemini 3.1 Pro",
+      "context": "1M",
+      "in": 2.00,
+      "out": 12.00,
+      "use": ["long", "reasoning", "multimodal"],
+      "best": "Huge context, value"
+    },
+    {
+      "id": "gemini-3-5-flash",
+      "label": "Gemini 3.5 Flash",
+      "context": "1M",
+      "in": 1.50,
+      "out": 9.00,
+      "use": ["cheap", "long"],
+      "best": "Massive volume"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "label": "DeepSeek V4 Pro",
+      "context": "1M",
+      "in": 0.435,
+      "out": 0.87,
+      "use": ["coding", "cheap", "reasoning"],
+      "best": "Open, affordable"
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "label": "DeepSeek V4 Flash",
+      "context": "1M",
+      "in": 0.14,
+      "out": 0.28,
+      "use": ["cheap", "coding"],
+      "best": "Cheapest frontier"
+    },
+    {
+      "id": "grok-4-3",
+      "label": "Grok 4.3",
+      "context": "2M",
+      "in": 0.20,
+      "out": 0.80,
+      "use": ["long", "cheap", "coding"],
+      "best": "Largest context (2M)"
+    }
+  ]
+}

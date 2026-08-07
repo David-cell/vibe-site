@@ -1,0 +1,7 @@
+# Netlify build config for Vibe Coding Tools
+# Connect this repo to Netlify (Git) and it will rebuild + deploy on every push.
+[build]
+  # Python 3 is available on Netlify build images by default.
+  command = "python build_site.py"
+  # build_site.py writes all HTML/CSS into the repo root, so publish the root.
+  publish = "."

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Code Security Checklist — Common Pitfalls | Vibe Coding Tools</title>
+<meta name="description" content="The security pitfalls most often baked into AI-generated code, grouped by risk. Generate a copy-ready checklist before you ship." />
+<link rel="canonical" href="https://vibe.david-cells.com/ai-security-checklist.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vibe Coding Tools" />
+<meta property="og:title" content="AI Code Security Checklist — Common Pitfalls | Vibe Coding Tools" />
+<meta property="og:description" content="The security pitfalls most often baked into AI-generated code, grouped by risk. Generate a copy-ready checklist before you ship." />
+<meta property="og:url" content="https://vibe.david-cells.com/ai-security-checklist.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Code Security Checklist — Common Pitfalls | Vibe Coding Tools" />
+<meta name="twitter:description" content="The security pitfalls most often baked into AI-generated code, grouped by risk. Generate a copy-ready checklist before you ship." />
+<meta property="og:image" content="https://vibe.david-cells.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://vibe.david-cells.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Vibe Coding Tools — AI Code Security Checklist","url":"https://vibe.david-cells.com/ai-security-checklist.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":"List the most common security pitfalls in AI-generated code, grouped by risk, as a copy-ready checklist, fully client-side","browserRequirements":"Requires JavaScript"}</script>
+<!-- Impact affiliate tracking -->
+<script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})("https://utt.impactcdn.com/P-A7561863-6222-4288-a584-35c6fbb4048e1.js","script","impactStat",document,window);impactStat("transformLinks");impactStat("trackImpression");</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4110184622096343" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="shell">
+
+<aside class="side">
+  <a class="brand" href="index.html">Vibe Coding Tools<small>Issue 01 · client-side</small></a>
+  <form class="search" onsubmit="return false">
+    <span class="ico">⌕</span>
+    <input id="sideSearch" type="search" placeholder="filter tools…" oninput="filterSide(this.value)"/>
+  </form>
+  <div class="sec">Tools</div>
+  <nav class="tools" id="sideNav"><a class="home" href="index.html""><span class="n">⌂</span><span>Home</span></a><a href="prompt-generator.html"><span class="n">01</span><span>Vibe Coding Prompt Builder</span></a><a href="ai-cost-calculator.html"><span class="n">02</span><span>AI Cost Calculator</span></a><a href="model-compare.html"><span class="n">03</span><span>LLM Model Compare</span></a><a href="claude-md-generator.html"><span class="n">04</span><span>CLAUDE.md Generator</span></a><a href="project-brief-generator.html"><span class="n">05</span><span>Project Brief Generator</span></a><a href="ai-pr-review.html"><span class="n">06</span><span>AI PR Review Checklist</span></a><a href="ai-security-checklist.html" class="active"><span class="n">07</span><span>AI Code Security Checklist</span></a></nav>
+  <div class="bottom">
+    <a href="blog/index.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="mark">Vol. 01 / 2026 · MK</div>
+</aside>
+<main><a class="back" href="index.html">← All tools</a>
+<div class="topbar">
+  <div class="greet">Tool <b>07 · AI Code Security Checklist</b></div>
+  <div class="tag"><span class="dot"></span>Live</div>
+</div><div class="shield"><b>Private</b> Everything runs in your browser. No uploads, no tracking, no signup.<span class="x">/ zero data collected</span></div><div class="t-tool-hero"><div class="crumb">Tools / 07 · AI Code Security Checklist</div><h1>AI Code Security Checklist</h1><p class="sub">AI code looks confident but often ships injection, hardcoded secrets, and missing auth checks. Pick your stack and get the checklist that matters.</p></div>
+<label for="secStack">Primary language / framework</label>
+<select id="secStack">
+  <option>JavaScript / TypeScript (Node)</option><option>Python</option><option>PHP</option><option>Go</option><option>Ruby</option><option>Java / Kotlin</option><option>SQL-heavy</option><option>Any / general</option>
+</select>
+<p class="hint">AI-generated code repeatedly fails on the items below. Tick what you have verified before shipping.</p>
+<div class="checks" id="secItems">
+  <label class="chk"><input type="checkbox" value="No SQL/script injection (parameterized queries, escaped input)" /> No SQL/script injection (parameterized queries)</label>
+  <label class="chk"><input type="checkbox" value="No hardcoded secrets, API keys, or tokens in source" /> No hardcoded secrets or API keys</label>
+  <label class="chk"><input type="checkbox" value="Auth checks on every protected route/function" /> Authorization checked on every protected route</label>
+  <label class="chk"><input type="checkbox" value="User input validated and size-limited" /> User input validated and size-limited</label>
+  <label class="chk"><input type="checkbox" value="No eval() / unsafe deserialization of untrusted data" /> No eval() / unsafe deserialization</label>
+  <label class="chk"><input type="checkbox" value="Dependencies pinned and from trusted sources" /> Dependencies pinned and vetted</label>
+  <label class="chk"><input type="checkbox" value="Errors do not leak stack traces or internals to users" /> Errors do not leak internals to users</label>
+  <label class="chk"><input type="checkbox" value="File uploads type-checked and stored outside web root" /> Uploads type-checked, stored safely</label>
+  <label class="chk"><input type="checkbox" value="Rate limiting / abuse protection on public endpoints" /> Rate limiting on public endpoints</label>
+  <label class="chk"><input type="checkbox" value="HTTPS enforced and secure cookies (HttpOnly, SameSite)" /> HTTPS + secure cookie flags</label>
+</div>
+<div class="row">
+  <button class="act" onclick="genSec()">Generate checklist</button>
+  <button class="ghost noflex" onclick="copySec()">Copy</button>
+</div>
+<textarea class="mdout" id="secOut" readonly rows="16"></textarea>
+<script>
+function genSec(){
+  var NL=String.fromCharCode(10);
+  var stack=document.getElementById('secStack').value;
+  var items=[].slice.call(document.querySelectorAll('#secItems input:checked')).map(function(c){return c.value;});
+  var L=[];
+  L.push('# AI Code Security Checklist ('+stack+')');
+  L.push('');
+  L.push('Verify before shipping AI-generated code:');
+  L.push('');
+  if(items.length){ items.forEach(function(i){ L.push('- [x] '+i); }); }
+  L.push('- [ ] All items above reviewed');
+  L.push('');
+  L.push('Generated by Vibe Coding Tools — a starting point, not a substitute for a real security audit.');
+  document.getElementById('secOut').value=L.join(NL);
+}
+function copySec(){
+  var t=document.getElementById('secOut');
+  if(!t.value){ genSec(); }
+  if(navigator.clipboard){ navigator.clipboard.writeText(t.value).catch(function(){}); }
+  else { t.select(); try{ document.execCommand('copy'); }catch(e){} }
+}
+genSec();
+</script><p><a href="ai-pr-review.html">Pair it with the AI PR review checklist →</a></p>
+<p><a href="claude-md-generator.html">Bake security rules into a CLAUDE.md →</a></p>
+<h2>Frequently asked questions</h2>
+<dl class="faq">
+  <dt>Is this a real security scanner?</dt>
+  <dd>No. It is an educational checklist of the pitfalls most often found in AI-generated code. For production, run a real SAST/DAST tool and a proper audit.</dd>
+  <dt>Why is AI code especially risky?</dt>
+  <dd>Models optimize for code that runs and looks right, not for security boundaries. They routinely emit injection-prone queries, hardcoded keys, and missing auth checks.</dd>
+  <dt>Should I bake these into CLAUDE.md?</dt>
+  <dd>Yes. Listing "never hardcode secrets, always parameterize queries" as a project rule prevents the mistake at generation time instead of catching it later.</dd>
+</dl>
+<footer class="site">
+  <div>Vibe Coding Tools · 100% client-side</div>
+  <div><a href="index.html">Tools</a><a href="blog/index.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+  <div class="aff-disclose">Some links on this site are affiliate links. See our <a href="privacy.html">Privacy</a> note.</div>
+  <div class="colophon">
+    <a class="home-link" href="https://blog.david-cells.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="hl-text">My homepage</span><span class="hl-domain">blog.david-cells.com</span><span class="hl-arrow">&#8599;</span>
+    </a>
+  </div>
+</footer>
+</main></div>
+
+<script>
+function filterSide(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('#sideNav a').forEach(function(a){
+    var t=a.textContent.toLowerCase();
+    a.style.display=(q===''||t.indexOf(q)>=0)?'':'none';
+  });
+}
+function act(name){
+  var f = window[name];
+  if (typeof f === 'function') { f(); }
+}
+</script>
+</body>
+</html>
