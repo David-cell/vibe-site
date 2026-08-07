@@ -618,7 +618,7 @@ tailwind.config = {
             Build <br/><span class="text-brutalist-yellow" style="-webkit-text-stroke: 1px #100e05;">Privately</span>
           </h2>
           <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
-            Seven practical tools to plan, prompt, pick, brief, and review your AI stack. Everything runs in your browser — no uploads, no tracking, no signup.
+            Seven practical tools to plan, prompt, pick, brief, and review — built for how you vibe code. Everything runs in your browser — no uploads, no tracking, no signup.
           </p>
           <div class="flex gap-4 pt-4">
             <a href="ai-cost-calculator.html" class="bg-brutalist-yellow text-black font-label-caps text-label-caps uppercase px-6 py-4 brutal-border brutal-shadow brutal-hover font-bold text-lg">Start: Cost Calculator</a>
