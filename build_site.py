@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Vibe Coding Tools static site generator (editorial bento design)."""
-import os, html, json as _json
+import os, html, re, json, json as _json
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
@@ -222,6 +222,48 @@ def webapp_schema(name, slug, features):
         '"operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},'
         '"featureList":"' + features.replace('"','\\"') + '","browserRequirements":"Requires JavaScript"}')
 
+# ---- SEO helpers: high-CTR titles / descriptions + FAQ JSON-LD ----
+def seo_tool_title(name):
+    return name + ' — Free Online [2026]'
+
+def seo_tool_meta(name, desc):
+    base = ('Free ' + name + ' that runs 100% in your browser. ' + desc
+            + ' No signup, no uploads — instant results.')
+    if len(base) > 155:
+        base = base[:152].rstrip() + '\u2026'
+    return base
+
+def seo_blog_meta(excerpt):
+    base = excerpt.rstrip('. ').rstrip('.') + '. Free, step-by-step guide — updated for 2026.'
+    if len(base) > 158:
+        base = base[:155].rstrip() + '\u2026'
+    return base
+
+def faq_schema_from_html(html_block):
+    if not html_block:
+        return ''
+    pairs = re.findall(r'<dt>(.*?)</dt>\s*<dd>(.*?)</dd>', html_block, re.S)
+    if not pairs:
+        return ''
+    items = []
+    for q, a in pairs:
+        q = re.sub(r'<[^>]+>', '', q).strip()
+        a = re.sub(r'<[^>]+>', '', a).strip()
+        items.append('{"@type":"Question","name":%s,"acceptedAnswer":{"@type":"Answer","text":%s}}'
+                     % (json.dumps(q, ensure_ascii=False), json.dumps(a, ensure_ascii=False)))
+    return '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[' + ','.join(items) + ']}'
+
+def tool_schema(brand, domain, name, slug, features, faq_html=''):
+    app = ('{"@context":"https://schema.org","@type":"SoftwareApplication","name":"' + brand + ' — '
+           + name.replace('"', '\\"')
+           + '","url":"https://' + domain + '/' + slug + '.html","applicationCategory":"DeveloperApplication",'
+           + '"operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},'
+           + '"featureList":' + json.dumps(features, ensure_ascii=False) + ',"browserRequirements":"Requires JavaScript"}')
+    faq = faq_schema_from_html(faq_html)
+    if faq:
+        return '{"@context":"https://schema.org","@graph":[' + app + ',' + faq + ']}'
+    return app
+
 def page(title, meta, schema, body_main, active_slug=None, prefix='', page_id='', url='https://vibe.david-cells.com/'):
     h = (HEAD.replace('__TITLE__', title).replace('__META__', meta)
             .replace('__SCHEMA__', schema).replace('__CSS__', prefix + 'site.css')
@@ -416,7 +458,7 @@ def page_brutalist(title, meta, schema, active_slug=None, page_id='', body='', u
     return head + chrome
 
 def build_index():
-    meta = 'Free, privacy-first vibe coding tools: a prompt builder, an AI cost calculator, an LLM model compare, a CLAUDE.md generator, a project brief generator, and AI code review + security checklists. 100% client-side.'
+    meta = '7 free, privacy-first vibe coding tools that run 100% in your browser — a prompt builder, AI cost calculator, LLM model compare, CLAUDE.md generator, project brief generator, AI PR review and security checklists. No signup.'
     schema = ('{"@context":"https://schema.org","@type":"WebSite","name":"Vibe Coding Tools","url":"https://vibe.david-cells.com/",'
               '"description":"Free, privacy-first online developer tools. Everything runs in your browser."}')
 
@@ -471,16 +513,16 @@ tailwind.config = {
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Vibe Coding Tools — Privacy-first vibe coding utilities</title>
+<title>Vibe Coding Tools — 7 Free AI Coding Tools [2026]</title>
 <meta name="description" content="__META__"/>
 <link rel="canonical" href="https://vibe.david-cells.com/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Vibe Coding Tools"/>
-<meta property="og:title" content="Vibe Coding Tools — Privacy-first vibe coding utilities"/>
+<meta property="og:title" content="Vibe Coding Tools — 7 Free AI Coding Tools [2026]"/>
 <meta property="og:description" content="__META__"/>
 <meta property="og:url" content="https://vibe.david-cells.com/"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Vibe Coding Tools — Privacy-first vibe coding utilities"/>
+<meta name="twitter:title" content="Vibe Coding Tools — 7 Free AI Coding Tools [2026]"/>
 <meta name="twitter:description" content="__META__"/>
 <meta property="og:image" content="https://vibe.david-cells.com/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -1242,7 +1284,9 @@ def build_tool(slug):
         body_src = body_src.replace('__MODEL_ROWS__', model_compare_rows())
         links = ' &middot; '.join('<a href="models/%s.html">%s</a>' % (mm['id'], html.escape(mm['label'])) for mm in MODELS)
         body_src = body_src.replace('__MODEL_PAGES__', '<p class="hint">Per-model price pages: ' + links + '</p>')
-    schema = webapp_schema('Vibe Coding Tools — ' + name, slug, c['features'])
+    schema = tool_schema('Vibe Coding Tools', 'vibe.david-cells.com', name, slug, c['features'], TOOL_FAQ.get(slug, ''))
+    title = seo_tool_title(name)
+    meta = seo_tool_meta(name, c['desc'])
     hero = (f'<div class="t-tool-hero">'
             f'<div class="crumb">Tools / {num} · {html.escape(name)}</div>'
             f'<h1>{html.escape(name)}</h1>'
@@ -1250,7 +1294,7 @@ def build_tool(slug):
             f'</div>')
     back = '<a class="back" href="index.html">← All tools</a>'
     body = back + SHIELD + hero + '<div class="brutal-card" style="padding:28px;">' + body_src + c['extra'] + '</div>' + TOOL_FAQ.get(slug, '')
-    return page_brutalist(c['title'], c['meta'], schema, active_slug=slug, body=body, url='https://vibe.david-cells.com/' + slug + '.html')
+    return page_brutalist(title, meta, schema, active_slug=slug, body=body, url='https://vibe.david-cells.com/' + slug + '.html')
 
 # ============================================================
 # PER-MODEL PRICING PAGES (programmatic SEO — one page per model)
@@ -1776,11 +1820,15 @@ def build_blog_index():
 
 def build_blog_post(slug):
     c = BLOG[slug]
-    meta = c['meta']
+    meta = seo_blog_meta(c['excerpt'])
     schema = ('{"@context":"https://schema.org","@type":"BlogPosting","headline":"'
               + c['title'].replace('"','\\"')
               + '","author":{"@type":"Organization","name":"Vibe Coding Tools"},'
-              + '"datePublished":"2026-08-03","publisher":{"@type":"Organization","name":"Vibe Coding Tools"}}')
+              + '"datePublished":"2026-08-03","publisher":{"@type":"Organization","name":"Vibe Coding Tools"},'
+              + '"description":' + json.dumps(c['excerpt'], ensure_ascii=False) + '}')
+    faq = faq_schema_from_html(c.get('body', ''))
+    if faq:
+        schema = '{"@context":"https://schema.org","@graph":[' + schema + ',' + faq + ']}'
     hero = (f'''<div class="t-tool-hero article-hero">
       <div class="crumb"><a href="index.html">Blog</a> / {html.escape(c['tag'])}</div>
       <h1>{html.escape(c['title'])}</h1>
