@@ -1370,9 +1370,9 @@ itself quickly. Most serious vibe coders end up using two.</p>
 <div class="aff-box">
   <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Tools this comparison was built with</span></div>
   <ul class="aff-list">
-    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI-first code editor with Tab completions and Composer for multi-file edits.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/windsurf" target="_blank" rel="sponsored nofollow noopener">Windsurf &rarr;</a><p class="aff-blurb">Fast agentic editor with the Cascade agent for rapid UI builds.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Terminal-native agent for repo-wide refactors and migrations.</p></li>
+    <li><a class="aff-link" href="https://cursor.com" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI-first code editor with Tab completions and Composer for multi-file edits.</p></li>
+    <li><a class="aff-link" href="https://windsurf.com" target="_blank" rel="sponsored nofollow noopener">Windsurf &rarr;</a><p class="aff-blurb">Fast agentic editor with the Cascade agent for rapid UI builds.</p></li>
+    <li><a class="aff-link" href="https://claude.com/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Terminal-native agent for repo-wide refactors and migrations.</p></li>
   </ul>
   <p class="aff-note">Vibe Coding Tools may earn a commission when you sign up via these links, at no extra cost to you. We only recommend tools we use.</p>
 </div>
@@ -1435,10 +1435,10 @@ request with the <a class="link" href="../prompt-generator.html">Vibe Coding Pro
 <div class="aff-box">
   <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Tools we recommend</span></div>
   <ul class="aff-list">
-    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">The all-rounder AI code editor. Free tier + Pro.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/windsurf" target="_blank" rel="sponsored nofollow noopener">Windsurf &rarr;</a><p class="aff-blurb">Fastest agentic editor. Free tier + Pro.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/replit" target="_blank" rel="sponsored nofollow noopener">Replit &rarr;</a><p class="aff-blurb">Zero-install, browser IDE. Free + Core.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Terminal agent for big changes. Pro plan.</p></li>
+    <li><a class="aff-link" href="https://cursor.com" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">The all-rounder AI code editor. Free tier + Pro.</p></li>
+    <li><a class="aff-link" href="https://windsurf.com" target="_blank" rel="sponsored nofollow noopener">Windsurf &rarr;</a><p class="aff-blurb">Fastest agentic editor. Free tier + Pro.</p></li>
+    <li><a class="aff-link" href="https://replit.com" target="_blank" rel="sponsored nofollow noopener">Replit &rarr;</a><p class="aff-blurb">Zero-install, browser IDE. Free + Core.</p></li>
+    <li><a class="aff-link" href="https://claude.com/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Terminal agent for big changes. Pro plan.</p></li>
   </ul>
   <p class="aff-note">Affiliate links — commissions help keep Vibe Coding Tools free. We only recommend tools we use.</p>
 </div>
@@ -1499,8 +1499,8 @@ pointing at the same rules.</p>
 <div class="aff-box">
   <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Agents that read your CLAUDE.md</span></div>
   <ul class="aff-list">
-    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Terminal agent that reads CLAUDE.md on every task. Pro plan.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI editor that respects project rules and .cursorrules. Free tier + Pro.</p></li>
+    <li><a class="aff-link" href="https://claude.com/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Terminal agent that reads CLAUDE.md on every task. Pro plan.</p></li>
+    <li><a class="aff-link" href="https://cursor.com" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI editor that respects project rules and .cursorrules. Free tier + Pro.</p></li>
   </ul>
   <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
 </div>
@@ -1549,8 +1549,8 @@ to see exactly how much each lever saves before you commit a budget.</p>
 <div class="aff-box">
   <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Cost-efficient AI coding</span></div>
   <ul class="aff-list">
-    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Prompt caching built in. Pro plan.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/deepseek" target="_blank" rel="sponsored nofollow noopener">DeepSeek &rarr;</a><p class="aff-blurb">Open-weight models at a fraction of frontier pricing. API access.</p></li>
+    <li><a class="aff-link" href="https://claude.com/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Prompt caching built in. Pro plan.</p></li>
+    <li><a class="aff-link" href="https://deepseek.com" target="_blank" rel="sponsored nofollow noopener">DeepSeek &rarr;</a><p class="aff-blurb">Open-weight models at a fraction of frontier pricing. API access.</p></li>
   </ul>
   <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
 </div>
@@ -1615,8 +1615,8 @@ becomes one of the highest-leverage tools you have.</p>
 <div class="aff-box">
   <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Code with confidence</span></div>
   <ul class="aff-list">
-    <li><a class="aff-link" href="https://example.com/aff/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Agentic coding with built-in review. Pro plan.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">Popular AI-first editor for fast iteration.</p></li>
+    <li><a class="aff-link" href="https://claude.com/claude-code" target="_blank" rel="sponsored nofollow noopener">Claude Code &rarr;</a><p class="aff-blurb">Agentic coding with built-in review. Pro plan.</p></li>
+    <li><a class="aff-link" href="https://cursor.com" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">Popular AI-first editor for fast iteration.</p></li>
   </ul>
   <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
 </div>
@@ -1682,8 +1682,8 @@ ship something real today and understand it tomorrow.</p>
 <div class="aff-box">
   <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Ship your first site</span></div>
   <ul class="aff-list">
-    <li><a class="aff-link" href="https://example.com/aff/netlify" target="_blank" rel="sponsored nofollow noopener">Netlify &rarr;</a><p class="aff-blurb">Drag-drop deploy for static sites. Free tier.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/cloudflare-pages" target="_blank" rel="sponsored nofollow noopener">Cloudflare Pages &rarr;</a><p class="aff-blurb">Fast, free static hosting on the edge.</p></li>
+    <li><a class="aff-link" href="https://netlify.com" target="_blank" rel="sponsored nofollow noopener">Netlify &rarr;</a><p class="aff-blurb">Drag-drop deploy for static sites. Free tier.</p></li>
+    <li><a class="aff-link" href="https://pages.cloudflare.com" target="_blank" rel="sponsored nofollow noopener">Cloudflare Pages &rarr;</a><p class="aff-blurb">Fast, free static hosting on the edge.</p></li>
   </ul>
   <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
 </div>
@@ -1745,9 +1745,9 @@ the loudest marketing.</p>
 <div class="aff-box">
   <div class="aff-head"><span class="aff-tag">Sponsored</span><span>Build & ship faster</span></div>
   <ul class="aff-list">
-    <li><a class="aff-link" href="https://example.com/aff/lovable" target="_blank" rel="sponsored nofollow noopener">Lovable &rarr;</a><p class="aff-blurb">Describe an app, get a deployable MVP.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/cursor" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI-first editor for full control.</p></li>
-    <li><a class="aff-link" href="https://example.com/aff/flutterflow" target="_blank" rel="sponsored nofollow noopener">FlutterFlow &rarr;</a><p class="aff-blurb">No-code mobile + cross-platform.</p></li>
+    <li><a class="aff-link" href="https://lovable.dev" target="_blank" rel="sponsored nofollow noopener">Lovable &rarr;</a><p class="aff-blurb">Describe an app, get a deployable MVP.</p></li>
+    <li><a class="aff-link" href="https://cursor.com" target="_blank" rel="sponsored nofollow noopener">Cursor &rarr;</a><p class="aff-blurb">AI-first editor for full control.</p></li>
+    <li><a class="aff-link" href="https://flutterflow.io" target="_blank" rel="sponsored nofollow noopener">FlutterFlow &rarr;</a><p class="aff-blurb">No-code mobile + cross-platform.</p></li>
   </ul>
   <p class="aff-note">Affiliate links &mdash; commissions help keep Vibe Coding Tools free.</p>
 </div>
